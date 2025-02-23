@@ -1,2 +1,3 @@
-# anime-expansion
-Recommends Anime based On Other Anime You Like
+# Anime Expansion
+
+Recommends anime based On Other anime you like
