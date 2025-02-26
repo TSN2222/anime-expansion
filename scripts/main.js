@@ -1,10 +1,26 @@
-function getPopularAnime() {
+const backPageButton = document.getElementById('backPage');
+const nextPageButton = document.getElementById('nextPage');
+const popularAnimeContainer = document.getElementById('main-item-two');
+const pageNumber = document.getElementById('pageNum');
+
+const state = {
+  page: 1,
+  perPage: 24,
+  isLoading: false,
+};
+
+function fetchAnimeData() {
+  // Show loading state
+  state.isLoading = true;
+  updateUI();
+
   const query = `
   query ($page: Int, $perPage: Int) {
     Page(page: $page, perPage: $perPage) {
       media(sort: POPULARITY_DESC, type: ANIME) {
         title {
           english
+          romaji
         }
         startDate {
           year
@@ -18,13 +34,7 @@ function getPopularAnime() {
         episodes
       }
     }
-  }
-`;
-
-  const variables = {
-    page: 1,
-    perPage: 24,
-  };
+  }`;
 
   const options = {
     method: 'POST',
@@ -34,53 +44,103 @@ function getPopularAnime() {
     },
     body: JSON.stringify({
       query,
-      variables,
+      variables: { page: state.page, perPage: state.perPage },
     }),
   };
 
   fetch('https://graphql.anilist.co', options)
-    .then((response) => response.json())
-    .then((data) => displayPopularAnime(data))
-    .catch((err) => console.error(err));
+    .then((response) => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
+    .then((data) => {
+      renderAnimeList(data);
+      state.isLoading = false;
+      updateUI();
+    })
+    .catch((err) => {
+      console.error('Error fetching anime data:', err);
+      state.isLoading = false;
+      updateUI();
+      // Show error message to user
+      popularAnimeContainer.innerHTML = '<div class="error">Failed to load anime data. Please try again.</div>';
+    });
 }
 
-function displayPopularAnime(data) {
-  const popularAnime = document.getElementById('main-item-two');
-  const animeSlice = data.data.Page.media.slice(0, 24);
+function renderAnimeList(data) {
+  // Clear existing content
+  popularAnimeContainer.innerHTML = '';
 
-  animeSlice.forEach((item) => {
-    const englishTitle = item.title.english;
-    const releaseDate = item.startDate.year;
+  // Create a document fragment to minimize DOM operations
+  const fragment = document.createDocumentFragment();
+
+  data.data.Page.media.forEach((item) => {
+    const title = item.title.english || item.title.romaji || 'No title available';
+    const releaseDate = item.startDate.year || 'N/A';
     const coverImage = item.coverImage.large;
-    const coverImageColor = item.coverImage.color;
-    const mediaFormat = item.format;
-    const rating = item.averageScore;
-    const episodeCount = item.episodes;
+    const mediaFormat = item.format || 'N/A';
+    const rating = item.averageScore ? `${item.averageScore}%` : 'N/A';
+    const episodeCount = item.episodes ? `${item.episodes} Eps` : 'N/A';
 
-    const popularAnimeHTML = `
-      <a href="">
-        <div>
-          <div>
-            <img
-              id="coverImage"
-              src="${coverImage}"
-              alt="Cover image of ${englishTitle}" />
-          </div>
-          <div>
-            <div>${englishTitle}</div>
-            <div id="info-container">
-              <div>${mediaFormat}</div>
-              <div>${releaseDate}</div>
-              <div>${episodeCount}</div>
-              <div>${rating}</div>
-            </div>
+    const animeCard = document.createElement('a');
+    animeCard.href = ''; // Add link here
+    animeCard.innerHTML = `
+      <div>
+        <div class="image-container">
+          <img
+            class="cover-image"
+            src="${coverImage}"
+            alt="Cover image of ${title}" />
+        </div>
+        <div class="details">
+          <div class="title">${title}</div>
+          <div class="info-container">
+            <div>${mediaFormat}</div>
+            <div>${releaseDate}</div>
+            <div>${episodeCount}</div>
+            <div>${rating}</div>
           </div>
         </div>
-      </a>
+      </div>
     `;
 
-    popularAnime.innerHTML += popularAnimeHTML;
+    fragment.appendChild(animeCard);
   });
+
+  popularAnimeContainer.appendChild(fragment);
 }
 
-getPopularAnime();
+function updateUI() {
+  // Update page number display
+  if (pageNumber) {
+    pageNumber.placeholder = state.page;
+  }
+
+  // Disable back button on page 1
+  backPageButton.disabled = state.page <= 1 || state.isLoading;
+
+  // Disable both buttons during loading
+  nextPageButton.disabled = state.isLoading;
+
+  // Add loading indicator if needed
+  if (state.isLoading) {
+    popularAnimeContainer.innerHTML = '<div class="loading">Loading...</div>';
+  }
+}
+
+function changePage(direction) {
+  const newPage = state.page + direction;
+
+  // Don't allow going below page 1
+  if (newPage < 1) return;
+
+  state.page = newPage;
+  fetchAnimeData();
+}
+
+// Event Listeners
+backPageButton.addEventListener('click', () => changePage(-1));
+nextPageButton.addEventListener('click', () => changePage(1));
+
+// Initial load
+fetchAnimeData();
