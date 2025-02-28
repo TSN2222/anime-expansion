@@ -63,7 +63,8 @@ function fetchAnimeData() {
       state.isLoading = false;
       updateUI();
       // Show error message to user
-      popularAnimeContainer.innerHTML = '<div class="error">Failed to load anime data. Please try again.</div>';
+      popularAnimeContainer.innerHTML =
+        '<div class="error">Failed to load anime data. Please try again.</div>';
     });
 }
 
@@ -75,7 +76,8 @@ function renderAnimeList(data) {
   const fragment = document.createDocumentFragment();
 
   data.data.Page.media.forEach((item) => {
-    const title = item.title.english || item.title.romaji || 'No title available';
+    const title =
+      item.title.english || item.title.romaji || 'No title available';
     const releaseDate = item.startDate.year || 'N/A';
     const coverImage = item.coverImage.large;
     const mediaFormat = item.format || 'N/A';
@@ -113,7 +115,7 @@ function renderAnimeList(data) {
 function updateUI() {
   // Update page number display
   if (pageNumber) {
-    pageNumber.placeholder = state.page;
+    pageNumber.value = state.page;
   }
 
   // Disable back button on page 1

@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 #main-container {
   display: flex;
   flex-direction: column;
@@ -16,12 +20,51 @@
 
 #main-item-two {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-  grid-template-rows: auto auto auto auto;
-  gap: 5px;
+  justify-content: space-evenly;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#main-item-two > a {
+  display: block;
+  width: 250px;
+  color: black;
+  background-color: goldenrod;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#main-item-two > a > div {
+}
+
+.image-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.cover-image {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .info-container {
   display: flex;
-  gap: 5px;
+  gap: 10px;
+  justify-content: center;
+  color: black;
+}
+
+.info-container > div {
+}
+
+.title {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
 }
