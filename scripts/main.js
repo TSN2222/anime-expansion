@@ -1,7 +1,7 @@
-const backPageButton = document.getElementById('backPage');
-const nextPageButton = document.getElementById('nextPage');
+const backPageButton = document.getElementById('back-page');
+const nextPageButton = document.getElementById('next-page');
 const popularAnimeContainer = document.getElementById('main-item-two');
-const pageNumber = document.getElementById('pageNum');
+const pageNumber = document.getElementById('page-num');
 
 const state = {
   page: 1,
@@ -63,7 +63,8 @@ function fetchAnimeData() {
       state.isLoading = false;
       updateUI();
       // Show error message to user
-      popularAnimeContainer.innerHTML = '<div class="error">Failed to load anime data. Please try again.</div>';
+      popularAnimeContainer.innerHTML =
+        '<div class="error">Failed to load anime data. Please try again.</div>';
     });
 }
 
@@ -75,7 +76,8 @@ function renderAnimeList(data) {
   const fragment = document.createDocumentFragment();
 
   data.data.Page.media.forEach((item) => {
-    const title = item.title.english || item.title.romaji || 'No title available';
+    const title =
+      item.title.english || item.title.romaji || 'No title available';
     const releaseDate = item.startDate.year || 'N/A';
     const coverImage = item.coverImage.large;
     const avgColor = item.coverImage.color;
@@ -115,14 +117,14 @@ function renderAnimeList(data) {
 function updateUI() {
   // Update page number display
   if (pageNumber) {
-    pageNumber.placeholder = state.page;
+    pageNumber.value = state.page;
   }
 
-  // Disable back button on page 1
+  // Disable back button on page 1 or while loading
   backPageButton.disabled = state.page <= 1 || state.isLoading;
 
-  // Disable both buttons during loading
-  nextPageButton.disabled = state.isLoading;
+  // Disable next button on page 5 or while loading
+  nextPageButton.disabled = state.page >= 5 || state.isLoading;
 
   // Add loading indicator if needed
   if (state.isLoading) {
