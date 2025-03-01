@@ -33,7 +33,7 @@
 #tabs > *,
 #navigator > * {
   color: white;
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(30, 30, 30);
   text-align: center;
   height: 40px;
   border: 0px;
@@ -59,13 +59,13 @@
 }
 
 #page-num {
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(15, 15, 15);
   outline: none;
 }
 
 #navigator > #back-page:disabled,
 #navigator > #next-page:disabled {
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(15, 15, 15);
   cursor: not-allowed;
 }
 
@@ -78,7 +78,7 @@
 }
 
 #navigator > .hover:hover {
-  background-color: rgb(65, 65, 65);
+  background-color: rgb(45, 45, 45);
 }
 
 /* #endregion */
@@ -117,7 +117,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* Show ellipsis for overflow text */
-  color: white;
+  color: rgb(224, 224, 224);
 }
 
 /* Container for images, ensures images fit within their container */
@@ -159,8 +159,8 @@
   overflow: hidden;
   padding: 2px;
   border-radius: 5px;
-  background-color: rgb(31, 31, 31);
-  color: rgb(148, 148, 148);
+  background-color: rgb(19, 19, 19);
+  color: rgb(100, 100, 100);
 }
 
 /* Media Queries for responsive grid adjustments */
