@@ -81,6 +81,10 @@
   background-color: rgb(45, 45, 45);
 }
 
+#tabs > .active-tab {
+  background-color: rgb(37, 38, 56);
+  color: rgb(138, 137, 213);
+}
 /* #endregion */
 
 /* #region Second Container Item Styles */

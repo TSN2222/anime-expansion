@@ -1,23 +1,55 @@
 const backPageButton = document.getElementById('back-page');
 const nextPageButton = document.getElementById('next-page');
-const popularAnimeContainer = document.getElementById('main-item-two');
+const animeContainer = document.getElementById('main-item-two');
 const pageNumber = document.getElementById('page-num');
+const tabButtons = document.querySelectorAll('#tabs button');
 
+// Object with page state settings
 const state = {
   page: 1,
   perPage: 24,
   isLoading: false,
+  currentSort: 'POPULARITY_DESC', // Default sort
 };
 
+// Map tap names to GraphGL sort parameters
+const sortMap = {
+  Trending: 'TRENDING_DESC',
+  Popular: 'POPULARITY_DESC',
+  'Top Rated': 'SCORE_DESC',
+};
+
+// Switch between tabs
+function switchTab(sortType) {
+  // Update the state with new sort type
+  state.currentSort = sortMap[sortType];
+
+  // Reset to page 1 when changing tabs
+  state.page = 1;
+
+  // Update active tab style
+  tabButtons.forEach((button) => {
+    if (button.textContent === sortType) {
+      button.classList.add('active-tab');
+    } else {
+      button.classList.remove('active-tab');
+    }
+  });
+
+  // Fetch data with updated sort parameter
+  fetchAnimeData();
+}
+
+// Fetch data from AniList
 function fetchAnimeData() {
   // Show loading state
   state.isLoading = true;
   updateUI();
 
   const query = `
-  query ($page: Int, $perPage: Int) {
+  query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
     Page(page: $page, perPage: $perPage) {
-      media(sort: POPULARITY_DESC, type: ANIME) {
+      media(sort: $sort, type: ANIME) {
         title {
           english
           romaji
@@ -44,7 +76,11 @@ function fetchAnimeData() {
     },
     body: JSON.stringify({
       query,
-      variables: { page: state.page, perPage: state.perPage },
+      variables: {
+        page: state.page,
+        perPage: state.perPage,
+        sort: [state.currentSort], // Pass the current sort as an array
+      },
     }),
   };
 
@@ -63,14 +99,15 @@ function fetchAnimeData() {
       state.isLoading = false;
       updateUI();
       // Show error message to user
-      popularAnimeContainer.innerHTML =
+      animeContainer.innerHTML =
         '<div class="error">Failed to load anime data. Please try again.</div>';
     });
 }
 
+// Render fetched data onto the screen
 function renderAnimeList(data) {
   // Clear existing content
-  popularAnimeContainer.innerHTML = '';
+  animeContainer.innerHTML = '';
 
   // Create a document fragment to minimize DOM operations
   const fragment = document.createDocumentFragment();
@@ -111,7 +148,7 @@ function renderAnimeList(data) {
     fragment.appendChild(animeCard);
   });
 
-  popularAnimeContainer.appendChild(fragment);
+  animeContainer.appendChild(fragment);
 }
 
 function updateUI() {
@@ -128,7 +165,7 @@ function updateUI() {
 
   // Add loading indicator if needed
   if (state.isLoading) {
-    popularAnimeContainer.innerHTML = '<div class="loading">Loading...</div>';
+    animeContainer.innerHTML = '<div class="loading">Loading...</div>';
   }
 }
 
@@ -145,6 +182,17 @@ function changePage(direction) {
 // Event Listeners
 backPageButton.addEventListener('click', () => changePage(-1));
 nextPageButton.addEventListener('click', () => changePage(1));
+
+// Event Listeners for tabs
+tabButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    // Don't do anything if this tab is already active or page is loading
+    if (button.classList.contains('active-tab') || state.isLoading) return;
+
+    // Switch to clicked tab
+    switchTab(button.textContent);
+  });
+});
 
 // Initial load
 fetchAnimeData();
