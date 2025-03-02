@@ -79,7 +79,7 @@ function fetchAnimeData() {
       variables: {
         page: state.page,
         perPage: state.perPage,
-        sort: [state.currentSort], // Pass the current sort as an array
+        sort: state.currentSort, // Pass the current sort as an array
       },
     }),
   };
@@ -113,18 +113,17 @@ function renderAnimeList(data) {
   const fragment = document.createDocumentFragment();
 
   data.data.Page.media.forEach((item) => {
-    const title =
-      item.title.english || item.title.romaji || 'No title available';
+    const title = item.title.english || 'No title available';
     const releaseDate = item.startDate.year || 'N/A';
     const coverImage = item.coverImage.large;
-    const avgColor = item.coverImage.color;
+    const avgColor = item.coverImage.color; // Will use later
     const mediaFormat = item.format || 'N/A';
     const rating = item.averageScore ? `${item.averageScore}%` : 'N/A';
     const episodeCount = item.episodes ? `${item.episodes}Eps` : 'N/A';
 
     const animeCard = document.createElement('a');
     animeCard.classList.add('anime-link');
-    animeCard.href = ''; // Add link here
+    animeCard.href = ''; // Will user later
     animeCard.innerHTML = `
       <div>
         <div class="image-container">
@@ -145,9 +144,11 @@ function renderAnimeList(data) {
       </div>
     `;
 
+    // Add all HTML in fragment as children to the animeCard (a tag)
     fragment.appendChild(animeCard);
   });
 
+  // Add all HTML in animeCard (a tag) to live DOM
   animeContainer.appendChild(fragment);
 }
 
@@ -172,8 +173,8 @@ function updateUI() {
 function changePage(direction) {
   const newPage = state.page + direction;
 
-  // Don't allow going below page 1
-  if (newPage < 1) return;
+  // Don't allow going below page 1 or page 5
+  if (newPage < 1 && newPage > 5) return;
 
   state.page = newPage;
   fetchAnimeData();
@@ -183,7 +184,7 @@ function changePage(direction) {
 backPageButton.addEventListener('click', () => changePage(-1));
 nextPageButton.addEventListener('click', () => changePage(1));
 
-// Event Listeners for tabs
+// Event Listeners to change tabs
 tabButtons.forEach((button) => {
   button.addEventListener('click', () => {
     // Don't do anything if this tab is already active or page is loading
@@ -192,6 +193,20 @@ tabButtons.forEach((button) => {
     // Switch to clicked tab
     switchTab(button.textContent);
   });
+});
+
+// Event Listener to allow manual page entry
+pageNumber.addEventListener('change', (e) => {
+  // Variable with the input value stored in it
+  const newPage = parseInt(e.target.value);
+  // Verifying newPage is valid, and changing the page
+  if (newPage && newPage >= 1 && newPage <= 5) {
+    state.page = newPage;
+    fetchAnimeData();
+  } else {
+    // Reset to current page if invalid input
+    pageNumber.value = state.page;
+  }
 });
 
 // Set initial active tab
