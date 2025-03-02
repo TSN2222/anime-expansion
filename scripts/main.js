@@ -9,7 +9,7 @@ const state = {
   page: 1,
   perPage: 24,
   isLoading: false,
-  currentSort: 'POPULARITY_DESC', // Default sort
+  currentSort: 'TRENDING_DESC', // Default sort
 };
 
 // Map tap names to GraphGL sort parameters
@@ -193,6 +193,9 @@ tabButtons.forEach((button) => {
     switchTab(button.textContent);
   });
 });
+
+// Set initial active tab
+document.querySelector('#tabs button:nth-child(1)').classList.add('active-tab');
 
 // Initial load
 fetchAnimeData();
