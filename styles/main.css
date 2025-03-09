@@ -10,15 +10,17 @@
 #main-item-one {
   display: flex;
   justify-content: space-between;
-  gap: 50px;
+  gap: 10px;
 }
 
 #tabs {
   margin-left: 20px;
+  min-width: 190px;
 }
 
 #navigator {
   margin-right: 20px;
+  min-width: 66px;
 }
 
 #tabs,
@@ -42,10 +44,13 @@
 
 #tabs > * {
   width: 100px;
+  white-space: nowrap;
 }
 
 #navigator > * {
   width: 50px;
+  min-width: 20px;
+  flex: 1;
 }
 
 #tabs > .left,
