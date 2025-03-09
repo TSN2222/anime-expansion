@@ -41,7 +41,7 @@ function switchTab(sortType) {
 }
 
 // Fetch data from AniList
-function fetchAnimeData() {
+async function fetchAnimeData() {
   // Show loading state
   state.isLoading = true;
   updateUI();
@@ -84,24 +84,26 @@ function fetchAnimeData() {
     }),
   };
 
-  fetch('https://graphql.anilist.co', options)
-    .then((response) => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then((data) => {
-      renderAnimeList(data);
-      state.isLoading = false;
-      updateUI();
-    })
-    .catch((err) => {
-      console.error('Error fetching anime data:', err);
-      state.isLoading = false;
-      updateUI();
-      // Show error message to user
-      animeContainer.innerHTML =
-        '<div class="error">Failed to load anime data. Please try again.</div>';
-    });
+  try {
+    const response = await fetch('https://graphql.anilist.co', options);
+
+    // Check if the HTTP status is in the successful range (200-299)
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    // Converts the raw response into a JavaScript object we can work with
+    const data = await response.json();
+    renderAnimeList(data);
+  } catch (err) {
+    console.error('Error fetching anime data:', err);
+    // Show error message to user
+    animeContainer.innerHTML =
+      '<div class="error">Failed to load anime data. Please try again.</div>';
+  } finally {
+    state.isLoading = false;
+    updateUI();
+  }
 }
 
 // Render fetched data onto the screen
