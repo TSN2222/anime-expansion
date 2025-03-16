@@ -10,3 +10,11 @@ function updateContentVisibility() {
     homeContent.style.display = isHomeActive ? "block" : "none";
     homeCarousel.style.display = isHomeActive ? "block" : "none";
 }
+
+menuItems.forEach(item => {
+    item.addEventListener("click", function () {
+        menuItems.forEach(i => i.classList.remove("active"));
+        this.classList.add("active");
+        updateContentVisibility();
+    });
+});
