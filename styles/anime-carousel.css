@@ -117,3 +117,24 @@ body {
   font-size: 20px;
   color: #fff;
 }
+
+/* Dots pagination at the bottom */
+.swiper-pagination {
+    bottom: 20px;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Make pagination dots larger & brighter */
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+    background: #fff;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}
