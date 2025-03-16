@@ -64,7 +64,7 @@ async function initAnimeCarousel() { //async function that waits for the fetch t
 
    // Clear existing slides
    carouselWrapper.innerHTML = "";
-}
+
 
  // Create each slide
  animeList.forEach(anime => {
@@ -127,4 +127,29 @@ async function initAnimeCarousel() { //async function that waits for the fetch t
 
   //  add this slide to the carousel wrapper
   carouselWrapper.appendChild(slide);
+});
+
+// 3) Initialize Swiper with auto-slide every 4s
+new Swiper(".swiper-container", {
+  loop: true,
+  speed: 200,
+  effect: "slide",
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+}
+
+// 4) Start the carousel once the DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  initAnimeCarousel();
 });
