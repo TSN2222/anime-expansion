@@ -65,3 +65,66 @@ async function initAnimeCarousel() { //async function that waits for the fetch t
    // Clear existing slides
    carouselWrapper.innerHTML = "";
 }
+
+ // Create each slide
+ animeList.forEach(anime => {
+  const slide = document.createElement("div");
+  slide.classList.add("swiper-slide");
+  slide.style.backgroundImage = `url(${anime.bannerImage})`;
+
+  // Info container (left/bottom area)
+  const infoDiv = document.createElement("div");
+  infoDiv.classList.add("anime-info");
+
+  // Title
+  const titleEl = document.createElement("h2");
+  titleEl.textContent = anime.title.english || "(No English Title)";
+
+  // Apply AniList average color (from coverImage.color) to title. Turnary operator to see if there is a color. if not title will be white.
+  const averageColor = anime.coverImage && anime.coverImage.color ? anime.coverImage.color : "#fff"; 
+  titleEl.style.color = averageColor;
+
+  //  info (format, episodes, duration, score)
+  const metaInfoEl = document.createElement("div");
+  metaInfoEl.classList.add("anime-meta");
+
+  const formatText = anime.format || "N/A";
+  const episodesText = (anime.episodes != null) ? `${anime.episodes} eps` : "N/A";
+  const durationText = (anime.duration != null) ? `${anime.duration} mins` : "N/A";
+  const scoreText = (anime.averageScore != null) ? `${anime.averageScore}%` : "N/A";
+
+  // Combine them into a single line
+  metaInfoEl.textContent = `${formatText} • ${episodesText} • ${durationText} • ${scoreText}`;
+
+  // Description Cleanup
+  let desc = anime.description ? anime.description : "No description available.";
+  desc = desc.replace(/\s+/g, " ");        // remove extra whitespace
+  desc = desc.replace(/<[^>]*>/g, "");     // remove HTML tags
+  desc = desc.replace(/\(Source[^)]*\)/gi, "");
+  desc = desc.replace(/\[.*?\]/g, "");
+  desc = new DOMParser().parseFromString(desc, "text/html").body.textContent || "";
+  if (desc.length > 200) {
+    desc = desc.slice(0, 200) + "...";
+  }
+
+  const descEl = document.createElement("p");
+  descEl.textContent = desc;
+
+  // Append title, meta info, and description to info container
+  infoDiv.appendChild(titleEl);
+  infoDiv.appendChild(metaInfoEl);
+  infoDiv.appendChild(descEl);
+
+  // Append info container to the slide
+  slide.appendChild(infoDiv);
+
+  // CREATE  "DETAILS" LINK TO THE SLIDE
+  const detailsLink = document.createElement("a");
+  detailsLink.classList.add("slide-details-button");
+  detailsLink.textContent = "Details";
+  detailsLink.href = `details.html?id=${anime.id}`;
+  slide.appendChild(detailsLink);
+
+  //  add this slide to the carousel wrapper
+  carouselWrapper.appendChild(slide);
+});
