@@ -82,3 +82,38 @@ body {
 .slide-details-button:hover {
     opacity: 1;
 }
+
+/* both arrows to the top-right, side by side */
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50px;
+  left: auto;
+  bottom: auto;
+  right: auto;
+  width: 44px;
+  height: 44px;
+  background: #aaa8a8;
+  border-radius: 4px;
+  z-index: 9999; /* ensures arrows are on top */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PREV arrow: near top-right */
+.swiper-button-prev {
+  right: 60px; /* 60px from the right edge */
+}
+
+/* NEXT arrow in the top-right corner */
+.swiper-button-next {
+  right: 10px;
+}
+
+/* Arrow icons size & color */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px;
+  color: #fff;
+}
