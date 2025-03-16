@@ -55,3 +55,13 @@ async function fetchTopAnime() {
       return [];
     }
   }
+
+  // 2) Build slides and initialize Swiper
+async function initAnimeCarousel() { //async function that waits for the fetch to complete before building the caorusel//
+  const animeList = await fetchTopAnime();
+  const carouselWrapper = document.getElementById("anime-carousel-slides");
+  if (!carouselWrapper) return;
+
+   // Clear existing slides
+   carouselWrapper.innerHTML = "";
+}
