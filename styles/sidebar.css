@@ -57,3 +57,56 @@
     margin-bottom: 5px;
     transition: color 0.3s ease-in-out;
 }
+
+/* Hover and Active icons get brighter + purple color */
+.sidebar a:hover .material-icons,
+.sidebar a.active .material-icons {
+    filter: brightness(1.2) contrast(1.2);
+    color: #bfa3ff;
+}
+
+/* Bottom Navigation Bar*/
+   @media screen and (max-width: 768px) {
+    .sidebar {
+      height: 60px; 
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: auto;
+      flex-direction: row;
+      justify-content: space-around;
+      padding-top: 0;
+    }
+  
+    /* Make each link fill a fraction of the bar width */
+    .sidebar a {
+      /* Take up equal horizontal space for each link */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  
+      /* Match the bar’s height exactly, so the highlight fills it */
+      height: 60px;
+      text-decoration: none;
+      color: white;
+      position: relative; 
+      padding: 0;         
+    }
+  
+    /* Keep the full purple highlight on hover/active */
+    .sidebar a.active,
+    .sidebar a:hover {
+      background-color: #3b2f63;
+      color: #bfa3ff;
+    }
+  
+    /* Remove the vertical line on mobile   */
+    .sidebar a.active::after,
+    .sidebar a:hover::after {
+      content: none;
+    }
+  }
