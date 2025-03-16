@@ -49,3 +49,11 @@
     background-color: transparent;
     color: white;
 }
+
+/* Icon styles */
+.sidebar .material-icons {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 5px;
+    transition: color 0.3s ease-in-out;
+}
