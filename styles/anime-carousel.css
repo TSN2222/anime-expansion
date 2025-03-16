@@ -138,3 +138,18 @@ body {
 .swiper-pagination-bullet-active {
     opacity: 1;
 }
+
+@media screen and (min-width: 769px) {
+    #home-content,
+    #profile-content,
+    #settings-content {
+        margin-left: 90px; /* Matches the sidebar width */
+    }
+}
+
+/* Hide description on smaller screens */
+@media (max-width: 900px) {
+    .anime-info p {
+        display: none;
+    }
+}
