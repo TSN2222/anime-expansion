@@ -18,3 +18,5 @@ menuItems.forEach(item => {
         updateContentVisibility();
     });
 });
+
+updateContentVisibility();
