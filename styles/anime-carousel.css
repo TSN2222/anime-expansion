@@ -60,3 +60,25 @@ body {
     opacity: 0.9;
     color: #ddd;
 }
+
+/* "Details" button for entire slide (bottom-right) */
+.slide-details-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3; /* above overlay & anime-info */
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #aaa8a8; /* background colour of details button */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.slide-details-button:hover {
+    opacity: 1;
+}
