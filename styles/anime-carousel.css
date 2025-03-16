@@ -12,3 +12,18 @@ body {
     position: relative;
     overflow: hidden;
 }
+
+/* Each slide with a background image */
+.swiper-slide {
+    position: relative; 
+    background: center / cover no-repeat;
+}
+
+/* Dark gradient overlay */
+.swiper-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+    z-index: 1;
+}
