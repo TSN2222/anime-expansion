@@ -10,3 +10,23 @@
     align-items: center;
     transition: all 0.03s ease-in-out;  /*animation for sidebar to go to bottom */
 }
+
+/* Sidebar menu items */
+.sidebar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    padding: 15px 0; 
+    text-decoration: none;
+    color: white;
+    position: relative; 
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Hover and Active: entire link purple + lighter text */
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #3b2f63;  /* Purple shade */
+    color: #bfa3ff;             /* Light purple text */
+}
