@@ -30,3 +30,22 @@
     background-color: #3b2f63;  /* Purple shade */
     color: #bfa3ff;             /* Light purple text */
 }
+
+/* Vertical Purple Bar  */
+.sidebar a.active::after,
+.sidebar a:hover::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 4px;
+    background-color: #bfa3ff;
+    border-radius: 2px;
+}
+
+/* Non-active items remain transparent and white text */
+.sidebar a:not(.active):not(:hover) {
+    background-color: transparent;
+    color: white;
+}
