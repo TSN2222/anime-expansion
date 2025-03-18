@@ -90,12 +90,16 @@ body {
     padding: 12px;
     margin: 60px 60px 60px auto;
   }
-  
+  .topAiring {
+    justify-content: start;
+  }
+
   .showcase-title {
     display: flex;
     max-width: 384px;
     flex-basis: 100%;
-    height: 50px;
+    justify-content: start;
+    height: 40px;
     color: white;
     font-size: 10px;
     font-family: "Poppins", "Arial Black", sans-serif;
@@ -141,7 +145,9 @@ body {
   
   .airing-parent {
     display: flex;
-    width: 352px;
+    max-width: 355px;
+    max-height: 96px;
+    flex-basis: 352px;
     height: 96px;
     border-radius: 5px;
     margin: 10px;
@@ -150,28 +156,30 @@ body {
   .image-container {
     flex-basis: 20%;
     height: 100%;
-    margin-right: 10%;
+    margin-right: 10px;
   }
   .cover-image {
     width: auto;
     min-width: 67px;
     max-width: 68px;
     height: 100%;
-    border-radius: 5px;
-    object-fit: cover;
+    border-radius: 3px;
+    object-fit: fill;
   }
   
   .anime-details {
+    display: grid;
     max-width: 280px;
     max-height: 96px;
-    justify-content: space-between;
+    align-items: center;
     flex-basis: 100%;
     height: 100%;
     border: none; 
-    border-radius: 5px;
+    border-radius: 3px;
     color: #E8E8E8;
     padding: 10px;
-    box-sizing: border-box;  
+    box-sizing: border-box;
+    position: relative;  
   }
 
   .airing-parent:hover {
@@ -179,6 +187,31 @@ body {
 
   }
 
+  .ani-Info {
+    max-height: 20px;
+    height: auto;
+    justify-content: space-between;
+  }
+
+  .airing-banner {
+    max-width: 211px;
+    height: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    justify-self: flex-end;
+    filter: grayscale(100%);
+    object-fit: cover;
+  }
+  .anime-title {
+    max-width: 250px;
+    max-height: 40px;
+    min-width: 230px;
+    width: auto;
+    height: auto;
+    align-self: flex-start;
+    margin-top: 10px;
+    position: absolute
+  }
 
   .details {
     width: auto;
@@ -187,4 +220,5 @@ body {
     height: 100%;
     border-radius: 3px;
     background-color: #696969;
+    position: absolute;
   }

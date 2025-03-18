@@ -21,6 +21,7 @@ async function fetchAiringAnime() {
           english
           romaji
         }
+        seasonYear
         startDate {
           year
         }
@@ -76,7 +77,8 @@ function renderAnimeList(data) {
       const title = anime.title.english || anime.title.romaji;
       const bannerImage = anime.bannerImage;
       const mediaFormat = anime.format;
-      const Year = anime.seasonYear
+      const year = anime.seasonYear;
+      const totalEpisodes = anime.episodes;
 
       const airingEntry = document.createElement('anicard');
       airingEntry.innerHTML = `
@@ -84,13 +86,14 @@ function renderAnimeList(data) {
           <div class="image-container">
               <img class="cover-image" src="${coverImage}" />
           </div>
-          <div class="anime-details" style="background-image: url('${bannerImage}');"> 
-              <div class="anime-title">${title}</div>
-              <div class="ani-info">
+          <div class="anime-details">
+            <img class= "airing-banner" src="${bannerImage}"/>
+            <div class="anime-title">${title}</div>
+            <div class="ani-info">
                 <div class="details">${mediaFormat}</div>
+                <div class="details">${year}</div>
                 <div class="details"></div>
-                <div class="details"></div>
-                <div class="details"></div>
+                <div class="details">${totalEpisodes}</div>
             </div>
           </div>
       `;
