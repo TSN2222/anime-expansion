@@ -6,9 +6,6 @@ document.getElementById("expand-btn").addEventListener("click", function() {
     this.parentElement.style.display = "none";
 });
 
-
-fetchAiringAnime();
-
 async function fetchAiringAnime() {
     const query = `
   query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
