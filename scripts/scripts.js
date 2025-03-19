@@ -92,7 +92,6 @@ function renderAnimeList(data) {
             <div class="ani-info">
                 <div class="details">${mediaFormat}</div>
                 <div class="details">${year}</div>
-                <div class="details"></div>
                 <div class="details">${totalEpisodes}</div>
             </div>
           </div>
