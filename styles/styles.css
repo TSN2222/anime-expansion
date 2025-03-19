@@ -199,16 +199,19 @@ body {
   }
 
   .airing-banner {
+    left: 30%;
     display:flex;
     width: 77%;
     height: 96px;
     border-radius: 3px;
     overflow: hidden;
     justify-self: flex-end;
-    filter: grayscale(100%);
+    filter: grayscale(100%) contrast(1.2);
     object-fit: cover;
     transition: filter 0.2s ease-in-out;
+    mask-image: linear-gradient(to left, rgba(0,0,0,.3), rgba(0,0,0,0));
   }
+
   .anime-title {
     max-width: 250px;
     max-height: 40px;
@@ -232,4 +235,5 @@ body {
     margin-right: 10px;
     color:#575757;
     font-size: 12px;
+    padding: 2px;
   }
