@@ -4,43 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Expansion</title>
-
+    <link rel="stylesheet" href="./styles/styles.css" />
     <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <!-- Carousel CSS -->
-  <link rel="stylesheet" href="styles/anime-carousel.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!-- Carousel CSS -->
+    <link rel="stylesheet" href="styles/anime-carousel.css" />
   </head>
   <body>
-
- <!-- Content Sections -->
- <div id="home-content">
-  <!-- Carousel Container -->
-  <div class="swiper-container" id="home-carousel">
-    <div class="swiper-wrapper" id="anime-carousel-slides">
+    <nav class="navbar">
+      <div class="logo">AnimeExpansion <span class="small">TV</span></div>
+      <div class="search-wrapper">
+        <div class="search-container">
+          <input type="text" placeholder="Search Anime" />
+        </div>
+        <button class="icon-btn"><i class="search"></i></button>
+        <button class="icon-btn"><i class="shuffle"></i></button>
+      </div>
+      <div class="right-buttons">
+        <button class="icon-btn"><i class="noti"></i></button>
+        <button class="icon-btn"><i class="account"></i></button>
+      </div>
+    </nav>
+    <!-- Content Sections -->
+    <div id="home-content">
+      <!-- Carousel Container -->
+      <div class="swiper-container" id="home-carousel">
+        <div class="swiper-wrapper" id="anime-carousel-slides"></div>
+        <!-- Pagination (dots) -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation arrows  -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <div class="root">
+        <div class="content-showcase">
+          <div class="showcase-title"><h1 id="topAiring">TOP AIRING</h1></div>
+          <div id="airing-sct"></div>
+          <div class="expand-btn-container">
+            <button id="expand-btn" class="expand-button"></button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Pagination (dots) -->
-    <div class="swiper-pagination"></div>
+    <div id="profile-content" style="display: none">Profile Content</div>
+    <div id="settings-content" style="display: none">Settings Content</div>
 
-    <!-- Navigation arrows  -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-</div>
-
-<div id="profile-content" style="display: none;">
-  Profile Content
-</div>
-<div id="settings-content" style="display: none;">
-  Settings Content
-</div>   
-
- <!-- Link to Swiper's JS for Carousel functionality -->
- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
- 
- <!-- Link to carousel to fetch anime-->
- <script src="scripts/carousel.js"></script>
-   
-</body>
+    <script src="./scripts/scripts.js"></script>
+    <!-- Link to Swiper's JS for Carousel functionality -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Link to carousel to fetch anime-->
+    <script src="scripts/carousel.js"></script>
+  </body>
 </html>
