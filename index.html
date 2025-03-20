@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Expansion</title>
-    <link rel="stylesheet" href="./styles/styles.css" />
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!-- Swiper CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-    <!-- Carousel CSS -->
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="styles/sidebar.css" />
     <link rel="stylesheet" href="styles/anime-carousel.css" />
   </head>
   <body>
@@ -28,6 +33,24 @@
         <button class="icon-btn"><i class="account"></i></button>
       </div>
     </nav>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Home Link -->
+      <a href="#home" class="active">
+        <span class="material-icons">home</span>
+        <span>Home</span>
+      </a>
+      <!-- Profile Link -->
+      <a href="#profile">
+        <span class="material-icons">person</span>
+        <span>Profile</span>
+      </a>
+      <!-- Settings Link -->
+      <a href="#settings">
+        <span class="material-icons">settings</span>
+        <span>Settings</span>
+      </a>
+    </div>
     <!-- Content Sections -->
     <div id="home-content">
       <!-- Carousel Container -->
@@ -58,5 +81,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Link to carousel to fetch anime-->
     <script src="scripts/carousel.js"></script>
+    <!-- Link to your script.js -->
+    <script src="scripts/sidebar.js"></script>
   </body>
 </html>
