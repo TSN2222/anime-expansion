@@ -4,24 +4,101 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Expansion</title>
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="styles/sidebar.css" />
+    <link rel="stylesheet" href="styles/anime-carousel.css" />
     <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
-    <div id="main-container">
-      <div id="main-item-one">
-        <div id="tabs">
-          <button class="left hover">Trending</button>
-          <button class="hover">Popular</button>
-          <button class="right hover">Top Rated</button>
+    <nav class="navbar">
+      <div class="logo">AnimeExpansion <span class="small">TV</span></div>
+      <div class="search-wrapper">
+        <div class="search-container">
+          <input type="text" placeholder="Search Anime" />
         </div>
-        <div id="navigator">
-          <button class="left hover" id="back-page"><</button>
-          <input type="text" id="page-num" />
-          <button class="right hover" id="next-page">></button>
+        <button class="icon-btn"><i class="search"></i></button>
+        <button class="icon-btn"><i class="shuffle"></i></button>
+      </div>
+      <div class="right-buttons">
+        <button class="icon-btn"><i class="noti"></i></button>
+        <button class="icon-btn"><i class="account"></i></button>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Home Link -->
+      <a href="#home" class="active">
+        <span class="material-icons">home</span>
+        <span>Home</span>
+      </a>
+      <!-- Profile Link -->
+      <a href="#profile">
+        <span class="material-icons">person</span>
+        <span>Profile</span>
+      </a>
+      <!-- Settings Link -->
+      <a href="#settings">
+        <span class="material-icons">settings</span>
+        <span>Settings</span>
+      </a>
+    </div>
+    <!-- Content Sections -->
+    <div id="home-content">
+      <!-- Carousel Container -->
+      <div class="swiper-container" id="home-carousel">
+        <div class="swiper-wrapper" id="anime-carousel-slides"></div>
+        <!-- Pagination (dots) -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation arrows  -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <div>
+        <div class="root">
+          <div class="content-showcase">
+            <div class="showcase-title"><h1 id="topAiring">TOP AIRING</h1></div>
+            <div id="airing-sct"></div>
+            <div class="expand-btn-container">
+              <button id="expand-btn" class="expand-button"></button>
+            </div>
+          </div>
+        </div>
+        <div id="main-container">
+          <div id="main-item-one">
+            <div id="tabs">
+              <button class="left hover">Trending</button>
+              <button class="hover">Popular</button>
+              <button class="right hover">Top Rated</button>
+            </div>
+            <div id="navigator">
+              <button class="left hover" id="back-page"><</button>
+              <input type="text" id="page-num" />
+              <button class="right hover" id="next-page">></button>
+            </div>
+          </div>
+          <div id="main-item-two"></div>
         </div>
       </div>
-      <div id="main-item-two"></div>
     </div>
+
+    <div id="profile-content" style="display: none">Profile Content</div>
+    <div id="settings-content" style="display: none">Settings Content</div>
+
+    <!-- Link to Swiper's JS for Carousel functionality -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="./scripts/scripts.js"></script>
+    <script src="scripts/carousel.js"></script>
+    <script src="scripts/sidebar.js"></script>
     <script src="./scripts/main.js"></script>
   </body>
 </html>
