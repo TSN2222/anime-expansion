@@ -1,117 +1,112 @@
-body {
-  background-color: black;
-  color: white;
-}
-
 .sidebar {
-    height: calc(100vh - 70px); /* Adjust height to fit below title bar */
-    width: 90px;                /* Sidebar width */
-    position: fixed;
-    top: 70px;                  /* Align below title bar */
-    left: 0;
-    background-color: #111;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.03s ease-in-out;  /*animation for sidebar to go to bottom */
+  height: calc(100vh - 70px); /* Adjust height to fit below title bar */
+  width: 90px; /* Sidebar width */
+  position: fixed;
+  top: 70px; /* Align below title bar */
+  left: 0;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.03s ease-in-out; /*animation for sidebar to go to bottom */
 }
 
 /* Sidebar menu items */
 .sidebar a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; 
-    padding: 15px 0; 
-    text-decoration: none;
-    color: white;
-    position: relative; 
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Hover and Active: entire link purple + lighter text */
 .sidebar a:hover,
 .sidebar a.active {
-    background-color: #3b2f63;  /* Purple shade */
-    color: #bfa3ff;             /* Light purple text */
+  background-color: #3b2f63; /* Purple shade */
+  color: #bfa3ff; /* Light purple text */
 }
 
 /* Vertical Purple Bar  */
 .sidebar a.active::after,
 .sidebar a:hover::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 10%;
-    height: 80%;
-    width: 4px;
-    background-color: #bfa3ff;
-    border-radius: 2px;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 4px;
+  background-color: #bfa3ff;
+  border-radius: 2px;
 }
 
 /* Non-active items remain transparent and white text */
 .sidebar a:not(.active):not(:hover) {
-    background-color: transparent;
-    color: white;
+  background-color: transparent;
+  color: white;
 }
 
 /* Icon styles */
 .sidebar .material-icons {
-    font-size: 32px;
-    color: white;
-    margin-bottom: 5px;
-    transition: color 0.3s ease-in-out;
+  font-size: 32px;
+  color: white;
+  margin-bottom: 5px;
+  transition: color 0.3s ease-in-out;
 }
 
 /* Hover and Active icons get brighter + purple color */
 .sidebar a:hover .material-icons,
 .sidebar a.active .material-icons {
-    filter: brightness(1.2) contrast(1.2);
-    color: #bfa3ff;
+  filter: brightness(1.2) contrast(1.2);
+  color: #bfa3ff;
 }
 
 /* Bottom Navigation Bar*/
-   @media screen and (max-width: 768px) {
-    .sidebar {
-      height: 60px; 
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: auto;
-      flex-direction: row;
-      justify-content: space-around;
-      padding-top: 0;
-    }
-  
-    /* Make each link fill a fraction of the bar width */
-    .sidebar a {
-      /* Take up equal horizontal space for each link */
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-  
-      /* Match the bar’s height exactly, so the highlight fills it */
-      height: 60px;
-      text-decoration: none;
-      color: white;
-      position: relative; 
-      padding: 0;         
-    }
-  
-    /* Keep the full purple highlight on hover/active */
-    .sidebar a.active,
-    .sidebar a:hover {
-      background-color: #3b2f63;
-      color: #bfa3ff;
-    }
-  
-    /* Remove the vertical line on mobile   */
-    .sidebar a.active::after,
-    .sidebar a:hover::after {
-      content: none;
-    }
+@media screen and (max-width: 768px) {
+  .sidebar {
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 0;
   }
+
+  /* Make each link fill a fraction of the bar width */
+  .sidebar a {
+    /* Take up equal horizontal space for each link */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Match the bar’s height exactly, so the highlight fills it */
+    height: 60px;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    padding: 0;
+  }
+
+  /* Keep the full purple highlight on hover/active */
+  .sidebar a.active,
+  .sidebar a:hover {
+    background-color: #3b2f63;
+    color: #bfa3ff;
+  }
+
+  /* Remove the vertical line on mobile   */
+  .sidebar a.active::after,
+  .sidebar a:hover::after {
+    content: none;
+  }
+}
