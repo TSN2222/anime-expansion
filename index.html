@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="styles/sidebar.css" />
     <link rel="stylesheet" href="styles/anime-carousel.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -62,13 +63,30 @@
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
-      <div class="root">
-        <div class="content-showcase">
-          <div class="showcase-title"><h1 id="topAiring">TOP AIRING</h1></div>
-          <div id="airing-sct"></div>
-          <div class="expand-btn-container">
-            <button id="expand-btn" class="expand-button"></button>
+      <div>
+        <div class="root">
+          <div class="content-showcase">
+            <div class="showcase-title"><h1 id="topAiring">TOP AIRING</h1></div>
+            <div id="airing-sct"></div>
+            <div class="expand-btn-container">
+              <button id="expand-btn" class="expand-button"></button>
+            </div>
           </div>
+        </div>
+        <div id="main-container">
+          <div id="main-item-one">
+            <div id="tabs">
+              <button class="left hover">Trending</button>
+              <button class="hover">Popular</button>
+              <button class="right hover">Top Rated</button>
+            </div>
+            <div id="navigator">
+              <button class="left hover" id="back-page"><</button>
+              <input type="text" id="page-num" />
+              <button class="right hover" id="next-page">></button>
+            </div>
+          </div>
+          <div id="main-item-two"></div>
         </div>
       </div>
     </div>
@@ -76,12 +94,11 @@
     <div id="profile-content" style="display: none">Profile Content</div>
     <div id="settings-content" style="display: none">Settings Content</div>
 
-    <script src="./scripts/scripts.js"></script>
     <!-- Link to Swiper's JS for Carousel functionality -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- Link to carousel to fetch anime-->
+    <script src="./scripts/scripts.js"></script>
     <script src="scripts/carousel.js"></script>
-    <!-- Link to your script.js -->
     <script src="scripts/sidebar.js"></script>
+    <script src="./scripts/main.js"></script>
   </body>
 </html>
