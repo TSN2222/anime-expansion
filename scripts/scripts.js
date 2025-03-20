@@ -1,19 +1,21 @@
 const airingContainer = document.getElementById("airing-sct");
 const url = 'https://graphql.anilist.co/';
-document.getElementById("expand-btn").addEventListener("click", function() {
-    const animeList = document.querySelector(".content-showcase"); 
-    animeList.style.maxHeight = animeList.scrollHeight + "px";
-    this.parentElement.style.display = "none";
-});
-document.getElementById("expand-btn").addEventListener("click", function() {
-  variables = {
+const variables = {
   page: 1,
-  perPage: 25,
+  perPage: 5,
   season: "WINTER",
   seasonYear: 2025,
   sort: ["SCORE_DESC"]
-  };
-  fetchAiringAnime();})
+};
+document.getElementById("expand-btn").addEventListener("click", function() {
+    const animeList = document.querySelector(".content-showcase"); 
+    animeList.style.maxHeight = animeList.scrollHeight + "px";
+    animeList.style.overflow = "auto";
+    this.parentElement.style.display = "none";
+    variables.perPage = 20;
+    fetchAiringAnime(variables);
+});
+
 
 async function fetchAiringAnime() {
     const query = `
@@ -45,13 +47,6 @@ async function fetchAiringAnime() {
     }
   }`;
 
-  const variables = {
-    page: 1,
-    perPage: 5,
-    season: "WINTER",
-    seasonYear: 2025,
-    sort: ["SCORE_DESC"]
-  };
   
     try {
         const response = await fetch(url, {
@@ -73,12 +68,12 @@ async function fetchAiringAnime() {
         console.error(error);
     }
 }
-airingContainer.innerHTML = "";
 
 function renderAnimeList(data) {
   const animeList = data.data.Page.media;
-
   const fragment = document.createDocumentFragment();
+
+  airingContainer.innerHTML = "";
 
   animeList.forEach((anime) => {
       const coverImage = anime.coverImage.large;
@@ -112,4 +107,5 @@ function renderAnimeList(data) {
 
   airingContainer.appendChild(fragment); 
 }
+
 fetchAiringAnime();
