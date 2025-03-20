@@ -5,7 +5,15 @@ document.getElementById("expand-btn").addEventListener("click", function() {
     animeList.style.maxHeight = animeList.scrollHeight + "px";
     this.parentElement.style.display = "none";
 });
-
+document.getElementById("expand-btn").addEventListener("click", function() {
+  variables = {
+  page: 1,
+  perPage: 25,
+  season: "WINTER",
+  seasonYear: 2025,
+  sort: ["SCORE_DESC"]
+  };
+  fetchAiringAnime();})
 
 async function fetchAiringAnime() {
     const query = `
@@ -65,10 +73,10 @@ async function fetchAiringAnime() {
         console.error(error);
     }
 }
+airingContainer.innerHTML = "";
 
 function renderAnimeList(data) {
   const animeList = data.data.Page.media;
- 
 
   const fragment = document.createDocumentFragment();
 
@@ -82,20 +90,22 @@ function renderAnimeList(data) {
 
       const airingEntry = document.createElement('anicard');
       airingEntry.innerHTML = `
-      <div class="airing-parent">
+        <div class="airing-parent">
           <div class="image-container">
               <img class="cover-image" src="${coverImage}" />
           </div>
-          <div class="anime-details">
+          <div class="anime-banner">
             <img class= "airing-banner" src="${bannerImage}"/>
+          </div>
+          <div class="anime-details">
             <div class="anime-title">${title}</div>
-            <div class="ani-info">
+              <div class="ani-info">
                 <div class="details">${mediaFormat}</div>
                 <div class="details">${year}</div>
                 <div class="details">${totalEpisodes}</div>
             </div>
-          </div>
-      `;
+        </div>
+            `;
 
       fragment.appendChild(airingEntry);
   });
