@@ -12,7 +12,7 @@ document.getElementById("expand-btn").addEventListener("click", function() {
     animeList.style.maxHeight = animeList.scrollHeight + "px";
     animeList.style.overflow = "auto";
     this.parentElement.style.display = "none";
-    variables.perPage = 20;
+    variables.perPage = 25;
     fetchAiringAnime(variables);
 });
 
