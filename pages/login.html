@@ -7,10 +7,24 @@
     <link rel="stylesheet" href="../styles/login.css" />
   </head>
   <body>
-    <nav class="auth-navbar"></nav>
+    <!--Navigation bar-->
+    <nav class="auth-navbar">
+      <div class="logo-home-link">
+        <a href="../index.html">
+          AnimeExpansion <span class="small">TV</span>
+        </a>
+      </div>
+      <div class="link-wrapper">
+        <button class="link-container"></button>
+        <button class="link-container"></button>
+        <button class="link-container"></button>
+      </div>
+    </nav>
+    <!--Authentication field-->
     <div class="form-container">
       <div class="auth-title"><h1>Login</h1></div>
       <form class="auth-info">
+        <!--Authentication inputs-->
         <div class="input-field">
           <input type="email" class="email" name="email" placeholder="Email" />
           <input
@@ -19,15 +33,17 @@
             name="password"
             placeholder="Password"
           />
+          <!--Submit button-->
           <button type="submit" value="login-submit" name="submit" />
         </div>
       </form>
+      <!--Forgot password link-->
       <a href="/forgot" class="link-forgot-password">Forgot password?</a>
+      <!--Signup link-->
       <a href="/signup" class="link-signup">
         Not registered? <span>Create an account</span></a
       >
     </div>
-
     <script src="../scripts/login.js"></script>
   </body>
 </html>
