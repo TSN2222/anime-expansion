@@ -19,6 +19,7 @@
         <button class="link-container"></button>
         <button class="link-container"></button>
       </div>
+      <div class="right-div"></div>
     </nav>
     <!--Authentication field-->
     <div class="form-container">
@@ -26,21 +27,28 @@
       <form class="auth-info">
         <!--Authentication inputs-->
         <div class="input-field">
-          <input type="email" class="email" name="email" placeholder="Email" />
+          <input
+            type="email"
+            class="auth-input"
+            name="email"
+            placeholder="Email"
+          />
           <input
             type="password"
-            class="password"
+            class="auth-input"
             name="password"
             placeholder="Password"
           />
           <!--Submit button-->
-          <button type="submit" value="login-submit" name="submit" />
+          <button type="submit" value="login-submit" name="submit">
+            Submit
+          </button>
         </div>
       </form>
       <!--Forgot password link-->
-      <a href="/forgot" class="link-forgot-password">Forgot password?</a>
+      <a id="forgot-txt" href="/forgot">Forgot password?</a>
       <!--Signup link-->
-      <a href="/signup" class="link-signup">
+      <a id="register-txt" href="/signup">
         Not registered? <span>Create an account</span></a
       >
     </div>

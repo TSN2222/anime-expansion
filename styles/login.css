@@ -1,31 +1,33 @@
 body {
   margin: 0px;
+  background-color: #edf0f5;
 }
 /* Navbar container */
 .auth-navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: rgb(30, 30, 30);
   padding: 10px 20px;
+  position: relative;
 }
-/* overiding logo link decoration */
-.logo-home-link > a {
+/* overiding link decoration */
+a {
   margin: 20%, 0px, 20%, 20%;
   text-decoration: none !important;
   color: inherit !important;
 }
 
-.logo-home-link > a:visited {
+a:visited {
   color: white !important;
   text-decoration: none !important;
 }
 
-.logo-home-link > a:hover {
+a:hover {
   text-decoration: none !important;
 }
 
-.logo-home-link > a:active {
+a:active {
   color: inherit !important;
 }
 /* Decorate logo link */
@@ -34,6 +36,8 @@ body {
   color: white;
   font-size: 22px;
   font-weight: bold;
+  position: absolute;
+  left: 15px;
 }
 
 .small {
@@ -45,7 +49,6 @@ body {
   display: flex;
   width: auto;
   height: auto;
-  margin-right: 40%;
 }
 /* button sizing and transition */
 .link-container {
@@ -55,10 +58,75 @@ body {
   border-radius: 10px;
   cursor: pointer;
   border: none;
-  background-color: rgb(150, 0, 255);
+  background-color: #3c2f63;
   transition: transform 0.2s ease-in-out;
 }
 
 .link-container:hover {
   transform: scale(1.05);
+}
+/* form sizing */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  height: 650px;
+  background-color: #fafafa;
+  border-radius: 3px;
+  margin: 5% auto;
+}
+/* title div & text formatting */
+.auth-title {
+  width: auto;
+  height: 20%;
+  justify-content: center;
+  align-content: center;
+}
+
+.auth-title > h1 {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  color: #686c8f;
+}
+
+.auth-info {
+  width: auto;
+  height: 35%;
+}
+/* input & button container formatting*/
+.input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+/* input formatting */
+.auth-input {
+  align-self: center;
+  width: 70%;
+  height: 30px;
+  margin-top: 30px;
+  border: 0px;
+  background-color: #f0f4f7;
+  padding-left: 10px;
+}
+/* button formatting */
+.input-field > button {
+  width: 65%;
+  height: 35px;
+  align-self: center;
+  border: 0px;
+  border-radius: 30px;
+  margin-top: 30px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: medium;
+  background-color: #3c2f63;
+  margin-top: 50px;
+  color: white;
+}
+
+.input-field > button:hover {
+  cursor: pointer;
 }
