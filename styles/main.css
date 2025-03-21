@@ -1,3 +1,14 @@
+body {
+  margin: 0px;
+  background-color: rgb(8, 8, 8);
+  color: white;
+}
+
 #main {
   display: flex;
+}
+
+#home-content {
+  margin-left: 12%;
+  margin-right: 7%;
 }

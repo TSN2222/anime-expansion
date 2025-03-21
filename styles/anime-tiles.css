@@ -15,12 +15,11 @@
 }
 
 #tabs {
-  margin-left: 20px;
   min-width: 190px;
 }
 
 #navigator {
-  margin-right: 20px;
+  margin-right: 40px;
   min-width: 66px;
 }
 
@@ -102,7 +101,7 @@
   ); /* Responsive grid columns */
   justify-content: space-evenly;
   gap: 20px;
-  margin: 20px 20px;
+  margin: 20px 40px 0px 0px;
 }
 
 /* Styles for links inside #main-item-two */
