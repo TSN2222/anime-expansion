@@ -1,5 +1,6 @@
 const airingContainer = document.getElementById('airing-sct');
 const url = 'https://graphql.anilist.co/';
+
 const variables = {
   page: 1,
   perPage: 5,
@@ -7,6 +8,7 @@ const variables = {
   seasonYear: 2025,
   sort: ['SCORE_DESC'],
 };
+
 document.getElementById('expand-btn').addEventListener('click', function () {
   const animeList = document.querySelector('.content-showcase');
   animeList.style.maxHeight = animeList.scrollHeight + 'px';
