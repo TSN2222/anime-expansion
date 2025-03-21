@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/signup.css" />
   </head>
   <body>
     <!--Navigation bar-->
@@ -17,13 +17,14 @@
       <div class="link-wrapper">
         <button class="link-container"><a href="../index.html">Home</a></button>
         <button class="link-container">Search</button>
-        <button class="link-container">Log in</button>
+        <button class="link-container">
+          <a href="../pages/login.html">Log in</a>
+        </button>
       </div>
-      <div class="right-div"></div>
     </nav>
     <!--Authentication field-->
     <div class="form-container">
-      <div class="auth-title"><h1>Login</h1></div>
+      <div class="auth-title"><h1>Sign Up</h1></div>
       <form class="auth-info">
         <!--Authentication inputs-->
         <div class="input-field">
@@ -34,10 +35,22 @@
             placeholder="Email"
           />
           <input
+            type="text"
+            class="auth-input"
+            name="Username"
+            placeholder="Username"
+          />
+          <input
             type="password"
             class="auth-input"
             name="password"
             placeholder="Password"
+          />
+          <input
+            type="password"
+            class="auth-input"
+            name="password"
+            placeholder="Confirm Password"
           />
           <!--Submit button-->
           <button type="submit" value="login-submit" name="submit">
@@ -48,7 +61,7 @@
       <!--Forgot password link-->
       <a id="forgot-txt" href="/forgot">Forgot password?</a>
       <!--Signup link-->
-      <a id="register-txt" href="/signup">
+      <a id="register-txt" href="../pages/login.html">
         Not registered? <span>Create an account</span></a
       >
     </div>
