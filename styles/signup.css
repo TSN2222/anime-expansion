@@ -1,0 +1,162 @@
+body {
+  margin: 0px;
+  background-color: #edf0f5;
+}
+/* Navbar container */
+.auth-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(30, 30, 30);
+  padding: 10px 20px;
+  position: relative;
+}
+/* overiding link decoration */
+a {
+  margin: 20%, 0px, 20%, 20%;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+a:visited {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+a:active {
+  color: inherit !important;
+}
+/* Decorate logo link */
+.logo-home-link {
+  width: fit-content;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  left: 15px;
+}
+
+.small {
+  font-size: 12px;
+  vertical-align: top;
+}
+/* top button wrapper sizing */
+.link-wrapper {
+  display: flex;
+  width: auto;
+  height: auto;
+}
+/* top button sizing and transition */
+.link-container {
+  width: 65px;
+  height: 36px;
+  margin-left: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #3c2f63;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.2s ease-in-out;
+}
+
+.link-container:hover {
+  transform: scale(1.05);
+}
+/* form sizing */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  height: 650px;
+  background-color: #fafafa;
+  border-radius: 7px;
+  margin: 5% auto;
+}
+/* title div & text formatting */
+.auth-title {
+  width: auto;
+  height: 20%;
+  justify-content: center;
+  align-content: center;
+}
+
+.auth-title > h1 {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  color: #686c8f;
+}
+
+.auth-info {
+  width: auto;
+  height: 35%;
+}
+/* input & button container formatting*/
+.input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+/* input formatting */
+.auth-input {
+  align-self: center;
+  width: 70%;
+  height: 30px;
+  margin-top: 30px;
+  border: 0px;
+  background-color: #f0f4f7;
+  padding-left: 10px;
+}
+/* button formatting */
+.input-field > button {
+  width: 65%;
+  height: 35px;
+  align-self: center;
+  border: 0px;
+  border-radius: 30px;
+  margin-top: 30px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: medium;
+  background-color: #3c2f63;
+  margin-top: 50px;
+  color: white;
+}
+
+.input-field > button:hover {
+  cursor: pointer;
+}
+/* forgot text formatting */
+#forgot-txt {
+  width: 50%;
+  height: auto;
+  align-self: center;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: small;
+  color: #686c8f !important;
+}
+/* register text formatting */
+#register-txt {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  align-self: center;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#register-txt > span {
+  color: #686c8f !important;
+}
+
+#register-txt:hover {
+  color: #686c8f !important;
+}
