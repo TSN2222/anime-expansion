@@ -59,6 +59,9 @@ a:active {
   cursor: pointer;
   border: none;
   background-color: #3c2f63;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-weight: bold;
   transition: transform 0.2s ease-in-out;
 }
 
