@@ -14,10 +14,12 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="stylesheet" href="styles/sidebar.css" />
-    <link rel="stylesheet" href="styles/anime-carousel.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/carousel.css" />
+    <link rel="stylesheet" href="./styles/airing-showcase.css" />
+    <link rel="stylesheet" href="./styles/anime-tiles.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -34,32 +36,24 @@
         <button class="icon-btn"><i class="account"></i></button>
       </div>
     </nav>
-    <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Home Link -->
       <a href="#home" class="active">
         <span class="material-icons">home</span>
         <span>Home</span>
       </a>
-      <!-- Profile Link -->
       <a href="#profile">
         <span class="material-icons">person</span>
         <span>Profile</span>
       </a>
-      <!-- Settings Link -->
       <a href="#settings">
         <span class="material-icons">settings</span>
         <span>Settings</span>
       </a>
     </div>
-    <!-- Content Sections -->
     <div id="home-content">
-      <!-- Carousel Container -->
       <div class="swiper-container" id="home-carousel">
         <div class="swiper-wrapper" id="anime-carousel-slides"></div>
-        <!-- Pagination (dots) -->
         <div class="swiper-pagination"></div>
-        <!-- Navigation arrows  -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
@@ -90,15 +84,14 @@
         </div>
       </div>
     </div>
-
     <div id="profile-content" style="display: none">Profile Content</div>
     <div id="settings-content" style="display: none">Settings Content</div>
 
     <!-- Link to Swiper's JS for Carousel functionality -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="./scripts/scripts.js"></script>
-    <script src="scripts/carousel.js"></script>
-    <script src="scripts/sidebar.js"></script>
-    <script src="./scripts/main.js"></script>
+    <script src="./scripts/sidebar.js"></script>
+    <script src="./scripts/carousel.js"></script>
+    <script src="./scripts/airing-showcase.js"></script>
+    <script src="./scripts/anime-tiles.js"></script>
   </body>
 </html>
