@@ -7,7 +7,7 @@ const tabButtons = document.querySelectorAll('#tabs button');
 // Object with page state settings
 const state = {
   page: 1,
-  perPage: 24,
+  perPage: 28,
   isLoading: false,
   currentSort: 'TRENDING_DESC', // Default sort
 };
