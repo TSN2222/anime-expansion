@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Expansion</title>
-    <link rel="stylesheet" href="../styles/signup.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
   </head>
   <body>
     <!--Navigation bar-->
@@ -25,18 +25,20 @@
     <!--Authentication field-->
     <div class="form-container">
       <div class="auth-title"><h1>Sign Up</h1></div>
-      <form class="auth-info">
+      <form id="signup-info">
         <!--Authentication inputs-->
         <div class="input-field">
           <input
             type="email"
             class="auth-input"
             name="email"
+            id="email-input"
             placeholder="Email"
           />
           <input
             type="text"
             class="auth-input"
+            id="username-input"
             name="Username"
             placeholder="Username"
           />
@@ -44,12 +46,14 @@
             type="password"
             class="auth-input"
             name="password"
+            id="password-input"
             placeholder="Password"
           />
           <input
             type="password"
             class="auth-input"
-            name="password"
+            id="auth-password-input"
+            name="confirm-password"
             placeholder="Confirm Password"
           />
           <!--Submit button-->

@@ -92,10 +92,16 @@ a:active {
   color: #686c8f;
 }
 
-.auth-info {
+#auth-info {
   width: auto;
   height: 35%;
 }
+
+#signup-info {
+  width: auto;
+  height: 55%;
+}
+
 /* input & button container formatting*/
 .input-field {
   display: flex;
