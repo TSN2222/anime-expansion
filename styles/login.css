@@ -94,12 +94,7 @@ a:active {
 
 #auth-info {
   width: auto;
-  height: 35%;
-}
-
-#signup-info {
-  width: auto;
-  height: 55%;
+  height: auto;
 }
 
 /* input & button container formatting*/
@@ -117,8 +112,13 @@ a:active {
   height: 30px;
   margin-top: 30px;
   border: 0px;
+  border-radius: 3px;
   background-color: #f0f4f7;
   padding-left: 10px;
+}
+
+.auth-input:focus {
+  outline: 0px;
 }
 /* button formatting */
 .input-field > button {
@@ -148,6 +148,7 @@ a:active {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: small;
   color: #686c8f !important;
+  margin-top: 15px;
 }
 /* register text formatting */
 #register-txt {
@@ -166,4 +167,12 @@ a:active {
 
 #register-txt:hover {
   color: #686c8f !important;
+}
+
+auth-info.incorrect input {
+  background-color: #f06272;
+}
+
+auth-info.incorrect input {
+  border-color: #f06272;
 }
