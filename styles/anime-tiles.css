@@ -27,7 +27,7 @@
 #navigator {
   display: flex;
   margin-top: 20px;
-  border: 1px solid grey;
+  border: 1px solid rgb(45, 45, 45);
   border-radius: 5px;
   overflow: hidden;
 }
@@ -35,7 +35,7 @@
 #tabs > *,
 #navigator > * {
   color: white;
-  background-color: rgb(30, 30, 30);
+  background-color: rgb(20, 20, 20);
   text-align: center;
   height: 40px;
   border: 0px;
@@ -53,24 +53,22 @@
   flex: 1;
 }
 
-#tabs > .left,
-#navigator > .left {
-  border-right: 1px solid grey;
+#tabs > .left {
+  border-right: 1px solid rgb(45, 45, 45);
 }
 
-#tabs > .right,
-#navigator > .right {
-  border-left: 1px solid grey;
+#tabs > .right {
+  border-left: 1px solid rgb(45, 45, 45);
 }
 
 #page-num {
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(14, 14, 14);
   outline: none;
 }
 
 #navigator > #back-page:disabled,
 #navigator > #next-page:disabled {
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(14, 14, 14);
   cursor: not-allowed;
 }
 
@@ -97,11 +95,11 @@
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
-    minmax(200px, 1fr)
+    minmax(180px, 1fr)
   ); /* Responsive grid columns */
   justify-content: space-evenly;
   gap: 20px;
-  margin: 20px 40px 0px 0px;
+  margin: 20px 20px 0px 0px;
 }
 
 /* Styles for links inside #main-item-two */
@@ -154,7 +152,7 @@
   display: flex;
   justify-content: start;
   gap: 5px;
-  font-size: 1rem;
+  font-size: 0.85rem;
   padding: 10px;
   white-space: nowrap;
   overflow: hidden;

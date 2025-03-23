@@ -12,6 +12,7 @@
 .swiper-slide {
   position: relative;
   background: center / cover no-repeat;
+  border-radius: 5px;
 }
 
 /* Dark gradient overlay */
@@ -64,12 +65,13 @@
   z-index: 3; /* above overlay & anime-info */
   display: inline-block;
   padding: 8px 16px;
-  background-color: #aaa8a8; /* background colour of details button */
-  color: #fff;
+  background-color: rgb(8, 8, 8); /* background colour of details button */
+  color: white;
   text-decoration: none;
+  border: 1px solid rgb(45, 45, 45);
   border-radius: 4px;
   font-size: 1rem;
-  opacity: 0.9;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
   cursor: pointer;
 }
@@ -86,14 +88,16 @@
   left: auto;
   bottom: auto;
   right: auto;
-  width: 44px;
-  height: 44px;
-  background: #aaa8a8;
+  width: 30px;
+  height: 30px;
+  background: rgb(8, 8, 8);
+  border: 1px solid rgb(45, 45, 45);
   border-radius: 4px;
   z-index: 9999; /* ensures arrows are on top */
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.8;
 }
 
 /* PREV arrow: near top-right */

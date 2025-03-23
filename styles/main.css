@@ -2,13 +2,36 @@ body {
   margin: 0px;
   background-color: rgb(8, 8, 8);
   color: white;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 #main {
   display: flex;
+  justify-content: space-between;
 }
 
 #home-content {
-  margin-left: 12%;
-  margin-right: 7%;
+  margin-left: 10%;
+  margin-right: 8%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(8, 8, 8);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(82, 82, 82);
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 150, 150);
 }

@@ -10,7 +10,7 @@ const variables = {
 };
 
 document.getElementById('expand-btn').addEventListener('click', function () {
-  const animeList = document.querySelector('.content-showcase');
+  const animeList = document.querySelector('.slider-showcase');
   animeList.style.maxHeight = animeList.scrollHeight + 'px';
   animeList.style.overflow = 'auto';
   this.parentElement.style.display = 'none';
@@ -84,24 +84,33 @@ function renderAnime(data) {
     const totalEpisodes = anime.episodes;
 
     const airingEntry = document.createElement('anicard');
-    airingEntry.innerHTML = `
-        <div class="airing-parent">
-          <div class="image-container-two">
-              <img class="cover-image-two" src="${coverImage}" />
-          </div>
-          <div class="anime-banner">
-            <img class= "airing-banner" src="${bannerImage}"/>
-          </div>
-          <div class="anime-details">
-            <div class="anime-title">${title}</div>
-              <div class="ani-info">
-                <div class="details-two">${mediaFormat}</div>
-                <div class="details-two">${year}</div>
-                <div class="details-two">${totalEpisodes}</div>
-            </div>
-        </div>
-            `;
+    let animeHTML = `
+    <div class="airing-parent">
+      <div class="image-container-two">
+        <img class="cover-image-two" src="${coverImage}" />
+      </div>`;
 
+    // Only add the banner image if it exists
+    if (bannerImage) {
+      animeHTML += `
+      <div class="anime-banner">
+        <img class="airing-banner" src="${bannerImage}"/>
+      </div>`;
+    }
+
+    // Add the rest of the HTML
+    animeHTML += `
+      <div class="anime-details">
+        <div class="anime-title">${title}</div>
+        <div class="ani-info">
+          <div class="details-two">${mediaFormat}</div>
+          <div class="details-two">${year}</div>
+          <div class="details-two">${totalEpisodes}</div>
+        </div>
+      </div>
+    </div>`;
+
+    airingEntry.innerHTML = animeHTML;
     fragment.appendChild(airingEntry);
   });
 

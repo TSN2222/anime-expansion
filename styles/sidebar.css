@@ -1,9 +1,10 @@
 .sidebar {
   height: calc(100vh - 70px); /* Adjust height to fit below title bar */
-  width: 90px; /* Sidebar width */
+  width: 70px; /* Sidebar width */
   position: fixed;
   left: 0;
-  background-color: rgb(30, 30, 30);
+  background-color: rgb(14, 14, 14);
+  border-right: 1px solid rgb(45, 45, 45);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +17,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 15px 0;
+  padding: 15px 0px;
   text-decoration: none;
   color: white;
   position: relative;
@@ -26,21 +27,9 @@
 /* Hover and Active: entire link purple + lighter text */
 .sidebar a:hover,
 .sidebar a.active {
-  background-color: #3b2f63; /* Purple shade */
-  color: #bfa3ff; /* Light purple text */
-}
-
-/* Vertical Purple Bar  */
-.sidebar a.active::after,
-.sidebar a:hover::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 10%;
-  height: 80%;
-  width: 4px;
-  background-color: #bfa3ff;
-  border-radius: 2px;
+  background-color: rgb(37, 38, 56); /* Purple shade */
+  border-right: 1px solid rgb(138, 137, 213);
+  color: rgb(138, 137, 213); /* Light purple text */
 }
 
 /* Non-active items remain transparent and white text */
@@ -51,7 +40,7 @@
 
 /* Icon styles */
 .sidebar .material-icons {
-  font-size: 32px;
+  font-size: 20spx;
   color: white;
   margin-bottom: 5px;
   transition: color 0.3s ease-in-out;
@@ -61,7 +50,7 @@
 .sidebar a:hover .material-icons,
 .sidebar a.active .material-icons {
   filter: brightness(1.2) contrast(1.2);
-  color: #bfa3ff;
+  color: rgb(138, 137, 213);
 }
 
 /* Bottom Navigation Bar*/
@@ -99,8 +88,8 @@
   /* Keep the full purple highlight on hover/active */
   .sidebar a.active,
   .sidebar a:hover {
-    background-color: #3b2f63;
-    color: #bfa3ff;
+    background-color: rgb(37, 38, 56);
+    color: rgb(138, 137, 213);
   }
 
   /* Remove the vertical line on mobile   */
