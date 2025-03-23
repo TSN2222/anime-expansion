@@ -3,6 +3,7 @@ const nextPageButton = document.getElementById('next-page');
 const animeContainer = document.getElementById('main-item-two');
 const pageNumber = document.getElementById('page-num');
 const tabButtons = document.querySelectorAll('#tabs button');
+const fetchURL = 'https://graphql.anilist.co';
 
 // Object with page state settings
 const state = {
@@ -85,7 +86,7 @@ async function fetchAnimeData() {
   };
 
   try {
-    const response = await fetch('https://graphql.anilist.co', options);
+    const response = await fetch(fetchURL, options);
 
     // Check if the HTTP status is in the successful range (200-299)
     if (!response.ok) {
