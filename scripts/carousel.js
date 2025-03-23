@@ -129,7 +129,7 @@ async function initAnimeCarousel() {
     const detailsLink = document.createElement('a');
     detailsLink.classList.add('slide-details-button');
     detailsLink.textContent = 'Details';
-    detailsLink.href = `details.html?id=${anime.id}`;
+    detailsLink.href = `../pages/details.html?id=${anime.id}`;
     slide.appendChild(detailsLink);
 
     // Add this slide to the carousel wrapper
