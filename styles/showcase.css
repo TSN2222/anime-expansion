@@ -1,8 +1,12 @@
 .root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 20px;
 }
 
-.content-showcase {
+.content-showcase,
+.content-showcaseTwo {
   display: flex;
   flex-direction: column;
   background-color: transparent;
@@ -13,8 +17,8 @@
   padding: 10px 0px 10px 10px;
   background-color: rgb(14, 14, 14);
 }
-
-.slider-showcase {
+f .slider-showcase,
+.slider-showcaseTwo {
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -26,7 +30,8 @@
   padding: 10px;
 }
 
-.showcase-title {
+.showcase-title,
+.showcase-titleTwo {
   display: flex;
   align-items: center;
   margin: 10px 0px 20px 0px;
@@ -35,7 +40,8 @@
   font-weight: bold;
 }
 
-.expand-btn-container {
+.expand-btn-container,
+.expand-btn-containerTwo {
   display: flex;
   justify-content: center;
   align-self: flex-end;
@@ -46,7 +52,8 @@
   margin-right: 10px;
 }
 
-.expand-button {
+.expand-button,
+.expand-buttonTwo {
   align-self: center;
   background: transparent;
   width: 100%;
@@ -166,6 +173,7 @@
 }
 
 /* Track */
-.slider-showcase::-webkit-scrollbar-track {
+.slider-showcase::-webkit-scrollbar-track,
+.slider-showcaseTwo::-webkit-scrollbar-track {
   background: rgb(14, 14, 14);
 }
