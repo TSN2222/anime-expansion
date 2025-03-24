@@ -155,7 +155,7 @@ function renderAnimeData(section, data) {
       animeHTML += `<div class="details-two">${year}</div>`;
     }
 
-    // Only add episodes if it exists and is not null/0
+    // Only add episodes if it exists
     if (totalEpisodes) {
       animeHTML += `<div class="details-two">${totalEpisodes}</div>`;
     }
