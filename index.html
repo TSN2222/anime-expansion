@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./styles/carousel.css" />
     <link rel="stylesheet" href="./styles/showcase.css" />
     <link rel="stylesheet" href="./styles/anime-cards.css" />
+    <link rel="stylesheet" href="./styles/settings.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -97,8 +98,51 @@
         </div>
       </div>
     </div>
-    <div id="profile-content" style="display: none"></div>
-    <div id="settings-content" style="display: none"></div>
+    <div id="profile-content"></div>
+    <div id="settings-content">
+      <div id="table">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <div class="info">
+                  <span class="name">Website Theme</span>
+                  <span class="description"
+                    >Select the theme for the website.</span
+                  >
+                </div>
+              </td>
+              <td>
+                <div>
+                  <button>Light</button>
+                  <button>Dark</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="info">
+                  <span class="name">Accent Color</span>
+                  <span class="description"
+                    >Select the primary accent color for the UI.</span
+                  >
+                </div>
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button class="dropbtn">Drop Down</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <button>Red</button>
+                    <button>Blue</button>
+                    <button>Pink</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <!-- Link to Swiper's JS for Carousel functionality -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -106,5 +150,6 @@
     <script src="./scripts/carousel.js"></script>
     <script src="./scripts/showcase.js"></script>
     <script src="./scripts/anime-cards.js"></script>
+    <script src="./scripts/settings.js"></script>
   </body>
 </html>

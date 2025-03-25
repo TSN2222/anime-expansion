@@ -1,0 +1,60 @@
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#table {
+  display: flex;
+  justify-content: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 1rem;
+  color: white;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: rgb(45, 45, 45);
+}
+
+.dropbtn {
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  overflow: auto;
+  z-index: 1;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown button:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
