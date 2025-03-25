@@ -1,22 +1,45 @@
-// Sidebar menu item interaction
-const menuItems = document.querySelectorAll('.sidebar a');
-const homeContent = document.getElementById('home-content');
+const sidebarLinks = document.querySelectorAll('.sidebar a');
 
-function updateContentVisibility() {
-  const isHomeActive = document.querySelector(
-    ".sidebar a.active[href='#home']"
-  );
+// spa-routing.js
+const routes = {
+  '#home': document.getElementById('home-content'),
+  '#profile': document.getElementById('profile-content'),
+  '#settings': document.getElementById('settings-content'),
+};
 
-  // Show or hide the home content and carousel based on the active state
-  homeContent.style.display = isHomeActive ? 'block' : 'none';
+function navigateTo(route) {
+  // Hide all content sections
+  Object.values(routes).forEach((section) => {
+    section.style.display = 'none';
+  });
+
+  // Show selected route content
+  if (routes[route]) {
+    routes[route].style.display = 'block';
+  }
+
+  // Update active sidebar item
+  sidebarLinks.forEach((link) => {
+    link.classList.toggle('active', link.getAttribute('href') === route);
+  });
 }
 
-menuItems.forEach((item) => {
-  item.addEventListener('click', function () {
-    menuItems.forEach((i) => i.classList.remove('active'));
-    this.classList.add('active');
-    updateContentVisibility();
+// Add event listeners to sidebar links
+sidebarLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const route = link.getAttribute('href');
+    navigateTo(route);
+
+    // Update browser URL without page reload
+    history.pushState(null, '', route);
   });
 });
 
-updateContentVisibility();
+// Handle browser back/forward buttons
+window.addEventListener('popstate', () => {
+  navigateTo(window.location.hash || '#home');
+});
+
+// Initial page load
+navigateTo(window.location.hash || '#home');
