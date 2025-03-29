@@ -3,8 +3,8 @@
   width: 70px; /* Sidebar width */
   position: fixed;
   left: 0;
-  background-color: rgb(14, 14, 14);
-  border-right: 1px solid rgb(45, 45, 45);
+  background-color: var(--secondary-background-color);
+  border-right: 1px solid var(--primary-border-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@
   width: 100%;
   padding: 15px 0px;
   text-decoration: none;
-  color: white;
+  color: var(--primary-text-color);
   position: relative;
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -27,7 +27,7 @@
 /* Hover and Active: entire link purple + lighter text */
 .sidebar a:hover,
 .sidebar a.active {
-  background-color: rgb(37, 38, 56); /* Purple shade */
+  background-color: var(--senary-background-color); /* Purple shade */
   border-right: 1px solid rgb(138, 137, 213);
   color: rgb(138, 137, 213); /* Light purple text */
 }
@@ -35,13 +35,13 @@
 /* Non-active items remain transparent and white text */
 .sidebar a:not(.active):not(:hover) {
   background-color: transparent;
-  color: white;
+  color: var(--primary-text-color);
 }
 
 /* Icon styles */
 .sidebar .material-icons {
   font-size: 20spx;
-  color: white;
+  color: var(--primary-text-color);
   margin-bottom: 5px;
   transition: color 0.3s ease-in-out;
 }
@@ -80,7 +80,7 @@
     /* Match the bar’s height exactly, so the highlight fills it */
     height: 60px;
     text-decoration: none;
-    color: white;
+    color: var(--primary-text-color);
     position: relative;
     padding: 0;
   }
@@ -88,7 +88,7 @@
   /* Keep the full purple highlight on hover/active */
   .sidebar a.active,
   .sidebar a:hover {
-    background-color: rgb(37, 38, 56);
+    background-color: var(--senary-background-color);
     color: rgb(138, 137, 213);
   }
 

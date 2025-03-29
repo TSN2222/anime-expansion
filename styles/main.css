@@ -1,7 +1,51 @@
+:root {
+  /* Light theme variables */
+  --primary-background-color: rgb(245, 245, 245);
+  --secondary-background-color: rgb(234, 234, 234);
+  --tertiary-background-color: rgb(224, 224, 224);
+  --quaternary-background-color: rgb(255, 255, 255);
+  --quinary-background-color: rgb(207, 207, 207);
+
+  --senary-background-color: rgb(215, 216, 236);
+
+  --primary-text-color: rgb(0, 0, 0);
+  --secondary-text-color: rgb(20, 20, 20);
+
+  --primary-border-color: rgb(206, 206, 206);
+
+  --primary-thumb-color: rgb(82, 82, 82);
+  --primary-thumb-hover-color: rgb(150, 150, 150);
+
+  --primary-swiper-gradient: rgba(255, 255, 255, 0.9) 0%;
+  --secondary-swiper-gradient: rgba(255, 255, 255, 0) 40%;
+}
+
+[data-theme='dark'] {
+  /* Dark theme variables */
+  --primary-background-color: rgb(8, 8, 8);
+  --secondary-background-color: rgb(14, 14, 14);
+  --tertiary-background-color: rgb(20, 20, 20);
+  --quaternary-background-color: rgb(32, 32, 32);
+  --quinary-background-color: rgb(32, 32, 32);
+
+  --senary-background-color: rgb(37, 38, 56);
+
+  --primary-text-color: rgb(255, 255, 255);
+  --secondary-text-color: rgb(100, 100, 100);
+
+  --primary-border-color: rgb(45, 45, 45);
+
+  --primary-thumb-color: rgb(82, 82, 82);
+  --primary-thumb-hover-color: rgb(150, 150, 150);
+
+  --primary-swiper-gradient: ;
+  --secondary-swiper-gradient: ;
+}
+
 body {
   margin: 0px;
-  background-color: rgb(8, 8, 8);
-  color: white;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -22,16 +66,16 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(8, 8, 8);
+  background-color: var(--primary-background-color);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(82, 82, 82);
+  background-color: var(--primary-thumb-color);
   border-radius: 20px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(150, 150, 150);
+  background-color: var(--primary-thumb-hover-color);
 }

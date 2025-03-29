@@ -134,7 +134,7 @@ function renderAnimeData(section, data) {
     // Only add the banner image if it exists
     if (bannerImage) {
       animeHTML += `
-  <div class="anime-banner">
+  <div>
     <img class="airing-banner" src="${bannerImage}"/>
   </div>`;
     }

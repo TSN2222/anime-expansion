@@ -11,13 +11,14 @@
   flex-direction: column;
   background-color: transparent;
   display: grid;
-  border: 1px solid rgb(45, 45, 45);
+  border: 1px solid var(--primary-border-color);
   border-radius: 6px;
   width: 384px;
   padding: 10px 0px 10px 10px;
-  background-color: rgb(14, 14, 14);
+  background-color: var(--secondary-background-color);
 }
-f .slider-showcase,
+
+.slider-showcase,
 .slider-showcaseTwo {
   display: flex;
   flex-direction: column;
@@ -35,7 +36,7 @@ f .slider-showcase,
   display: flex;
   align-items: center;
   margin: 10px 0px 20px 0px;
-  color: white;
+  color: var(--primary-text-color);
   font-size: 1rem;
   font-weight: bold;
 }
@@ -45,7 +46,7 @@ f .slider-showcase,
   display: flex;
   justify-content: center;
   align-self: flex-end;
-  background-color: rgb(20, 20, 20);
+  background-color: var(--tertiary-background-color);
   width: 100%;
   height: 41px;
   border-radius: 5px;
@@ -69,7 +70,7 @@ f .slider-showcase,
 
 .expand-button:hover {
   transform: scale(1.02);
-  background-color: #1f1f1f;
+  background-color: var(--quaternary-background-color);
 }
 
 .airing-parent {
@@ -78,14 +79,16 @@ f .slider-showcase,
   border-radius: 5px;
   margin: 0px 10px 10px 0px;
   transition: transform 0.2s;
-  background-color: #141414;
+  background-color: var(--tertiary-background-color);
   position: relative;
 }
+
 .image-container-two {
   flex-basis: 20%;
   height: 100%;
   margin-right: 10px;
 }
+
 .cover-image-two {
   width: auto;
   min-width: 67px;
@@ -102,7 +105,7 @@ f .slider-showcase,
   height: 100%;
   border: none;
   border-radius: 3px;
-  color: #e8e8e8;
+  color: var(--primary-text-color);
   box-sizing: border-box;
   position: absolute;
   left: 30%;
@@ -137,18 +140,6 @@ f .slider-showcase,
   mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 }
 
-.anime-bannner {
-  max-width: 280px;
-  max-height: 96px;
-  flex-basis: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 3px;
-  color: #e8e8e8;
-  box-sizing: border-box;
-  position: absolute;
-}
-
 .anime-title {
   max-width: 250px;
   max-height: 40px;
@@ -165,9 +156,9 @@ f .slider-showcase,
   max-height: 18px;
   height: auto;
   border-radius: 3px;
-  background-color: rgb(32, 32, 32);
+  background-color: var(--quinary-background-color);
   margin-right: 10px;
-  color: rgb(100, 100, 100);
+  color: var(--secondary-text-color);
   font-size: 0.85;
   padding: 2px;
 }
@@ -175,5 +166,5 @@ f .slider-showcase,
 /* Track */
 .slider-showcase::-webkit-scrollbar-track,
 .slider-showcaseTwo::-webkit-scrollbar-track {
-  background: rgb(14, 14, 14);
+  background: var(--secondary-background-color);
 }

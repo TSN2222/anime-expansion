@@ -2,7 +2,7 @@
 #main-container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(8, 8, 8);
+  background-color: var(--primary-background-color);
   width: 80%;
 }
 /* #endregion */
@@ -27,15 +27,15 @@
 #navigator {
   display: flex;
   margin-top: 20px;
-  border: 1px solid rgb(45, 45, 45);
+  border: 1px solid var(--primary-border-color);
   border-radius: 5px;
   overflow: hidden;
 }
 
 #tabs > *,
 #navigator > * {
-  color: white;
-  background-color: rgb(20, 20, 20);
+  color: var(--primary-text-color);
+  background-color: var(--tertiary-background-color);
   text-align: center;
   height: 40px;
   border: 0px;
@@ -54,21 +54,21 @@
 }
 
 #tabs > .left {
-  border-right: 1px solid rgb(45, 45, 45);
+  border-right: 1px solid var(--primary-border-color);
 }
 
 #tabs > .right {
-  border-left: 1px solid rgb(45, 45, 45);
+  border-left: 1px solid var(--primary-border-color);
 }
 
 #page-num {
-  background-color: rgb(14, 14, 14);
+  background-color: var(--secondary-background-color);
   outline: none;
 }
 
 #navigator > #back-page:disabled,
 #navigator > #next-page:disabled {
-  background-color: rgb(14, 14, 14);
+  background-color: var(--secondary-background-color);
   cursor: not-allowed;
 }
 
@@ -81,11 +81,11 @@
 }
 
 #navigator > .hover:hover {
-  background-color: rgb(45, 45, 45);
+  background-color: var(--quaternary-background-color);
 }
 
 #tabs > .active-tab {
-  background-color: rgb(37, 38, 56);
+  background-color: var(--senary-background-color);
   color: rgb(138, 137, 213);
 }
 /* #endregion */
@@ -124,7 +124,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* Show ellipsis for overflow text */
-  color: rgb(224, 224, 224);
+  color: var(--primary-text-color);
 }
 
 /* Container for images, ensures images fit within their container */
@@ -144,7 +144,7 @@
 
 /* Container for additional anime details */
 .details {
-  background-color: rgb(8, 8, 8);
+  background-color: var(--primary-background-color);
 }
 
 /* Container for anime info text */
@@ -156,7 +156,6 @@
   padding: 10px;
   white-space: nowrap;
   overflow: hidden;
-  color: black;
 }
 
 /* Child elements inside .info-container */
@@ -166,8 +165,8 @@
   overflow: hidden;
   padding: 2px;
   border-radius: 5px;
-  background-color: rgb(19, 19, 19);
-  color: rgb(100, 100, 100);
+  background-color: var(--tertiary-background-color);
+  color: var(--secondary-text-color);
 }
 
 /* Media Queries for responsive grid adjustments */

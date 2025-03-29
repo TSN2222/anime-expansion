@@ -5,14 +5,14 @@
   position: sticky;
   height: 50px;
   top: 0;
-  background: rgb(14, 14, 14);
-  border-bottom: 1px solid rgb(45, 45, 45);
+  background: var(--secondary-background-color);
+  border-bottom: 1px solid var(--primary-border-color);
   padding: 10px;
   z-index: 10000;
 }
 
 .logo {
-  color: white;
+  color: var(--primary-text-color);
   font-size: 22px;
   font-weight: bold;
   text-decoration: none;
@@ -33,8 +33,8 @@
 .search-container {
   display: flex;
   align-items: center;
-  background: rgb(20, 20, 20);
-  border: 1px solid rgb(45, 45, 45);
+  background: var(--tertiary-background-color);
+  border: 1px solid var(--primary-border-color);
   border-radius: 5px;
   padding: 5px;
   max-width: 465px;
@@ -46,7 +46,6 @@
   background: transparent;
   border: none;
   outline: none;
-  color: white;
   padding: 5px;
   width: 100%;
 }
@@ -57,9 +56,8 @@
 }
 
 .icon-btn {
-  background: rgb(20, 20, 20);
-  border: 1px solid rgb(45, 45, 45);
-  color: white;
+  background: var(--tertiary-background-color);
+  border: 1px solid var(--primary-border-color);
   width: 40px;
   height: 40px;
   padding: 8px 10px;
