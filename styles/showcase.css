@@ -68,7 +68,8 @@
   transition: transform 0.2s;
 }
 
-.expand-button:hover {
+.expand-button:hover,
+.expand-buttonTwo:hover {
   transform: scale(1.02);
   background-color: var(--quaternary-background-color);
 }

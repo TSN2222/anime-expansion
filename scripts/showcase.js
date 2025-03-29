@@ -68,6 +68,7 @@ const animeConfigs = {
             format
             averageScore
             episodes
+            bannerImage
             nextAiringEpisode {
               episode
               timeUntilAiring
