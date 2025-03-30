@@ -1,4 +1,4 @@
-:root {
+[data-theme='light'] {
   /* Light theme variables */
   --primary-background-color: rgb(245, 245, 245);
   --secondary-background-color: rgb(234, 234, 234);
