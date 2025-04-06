@@ -1,13 +1,12 @@
 .sidebar {
   height: calc(100vh - 70px); /* Adjust height to fit below title bar */
   width: 70px; /* Sidebar width */
-  position: fixed;
-  left: 0;
   background-color: var(--secondary-background-color);
   border-right: 1px solid var(--primary-border-color);
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
   transition: all 0.03s ease-in-out; /*animation for sidebar to go to bottom */
 }
 

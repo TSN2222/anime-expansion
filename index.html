@@ -39,111 +39,112 @@
         <button class="icon-btn"><i class="account"></i></button>
       </div>
     </nav>
-    <div class="sidebar">
-      <a href="#home" class="active">
-        <span class="material-icons">home</span>
-        <span>Home</span>
-      </a>
-      <a href="#profile">
-        <span class="material-icons">person</span>
-        <span>Profile</span>
-      </a>
-      <a href="#settings">
-        <span class="material-icons">settings</span>
-        <span>Settings</span>
-      </a>
-    </div>
-    <div id="home-content">
-      <div class="swiper-container" id="home-carousel">
-        <div class="swiper-wrapper" id="anime-carousel-slides"></div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+    <div class="layout">
+      <div class="sidebar">
+        <a href="#home" class="active">
+          <span class="material-icons">home</span>
+          <span>Home</span>
+        </a>
+        <a href="#profile">
+          <span class="material-icons">person</span>
+          <span>Profile</span>
+        </a>
+        <a href="#settings">
+          <span class="material-icons">settings</span>
+          <span>Settings</span>
+        </a>
       </div>
-      <div id="main">
-        <div id="main-container">
-          <div id="main-item-one">
-            <div id="tabs">
-              <button class="left hover">Trending</button>
-              <button class="hover">Popular</button>
-              <button class="right hover">Top Rated</button>
-            </div>
-            <div id="navigator">
-              <button class="left hover" id="back-page"><</button>
-              <input type="text" id="page-num" />
-              <button class="right hover" id="next-page">></button>
-            </div>
-          </div>
-          <div id="main-item-two"></div>
+      <div id="home-content">
+        <div class="swiper-container" id="home-carousel">
+          <div class="swiper-wrapper" id="anime-carousel-slides"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
-        <div class="root">
-          <div class="content-showcase">
-            <div class="showcase-title">TOP AIRING</div>
-            <div class="slider-showcase">
-              <div id="airing-sct"></div>
-              <div class="expand-btn-container">
-                <button id="expand-btn" class="expand-button"></button>
+        <div id="main">
+          <div id="main-container">
+            <div id="main-item-one">
+              <div id="tabs">
+                <button class="left hover">Trending</button>
+                <button class="hover">Popular</button>
+                <button class="right hover">Top Rated</button>
+              </div>
+              <div id="navigator">
+                <button class="left hover" id="back-page"><</button>
+                <input type="text" id="page-num" />
+                <button class="right hover" id="next-page">></button>
+              </div>
+            </div>
+            <div id="main-item-two"></div>
+          </div>
+          <div class="root">
+            <div class="content-showcase">
+              <div class="showcase-title">TOP AIRING</div>
+              <div class="slider-showcase">
+                <div id="airing-sct"></div>
+                <div class="expand-btn-container">
+                  <button id="expand-btn" class="expand-button"></button>
+                </div>
+              </div>
+            </div>
+            <div class="content-showcaseTwo">
+              <div class="showcase-titleTwo">UPCOMING</div>
+              <div class="slider-showcaseTwo">
+                <div id="airing-sctTwo"></div>
+                <div class="expand-btn-containerTwo">
+                  <button id="expand-btnTwo" class="expand-buttonTwo"></button>
+                </div>
               </div>
             </div>
           </div>
-          <div class="content-showcaseTwo">
-            <div class="showcase-titleTwo">UPCOMING</div>
-            <div class="slider-showcaseTwo">
-              <div id="airing-sctTwo"></div>
-              <div class="expand-btn-containerTwo">
-                <button id="expand-btnTwo" class="expand-buttonTwo"></button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-    <div id="profile-content"></div>
-    <div id="settings-content">
-      <div id="table">
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <div class="info">
-                  <span class="name">Website Theme</span>
-                  <span class="description"
-                    >Select the theme for the website.</span
-                  >
-                </div>
-              </td>
-              <td>
-                <div>
-                  <button id="light-theme-btn">Light</button>
-                  <button id="dark-theme-btn">Dark</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="info">
-                  <span class="name">Accent Color</span>
-                  <span class="description"
-                    >Select the primary accent color for the UI.</span
-                  >
-                </div>
-              </td>
-              <td>
-                <div class="dropdown">
-                  <button class="dropbtn">Drop Down</button>
-                  <div id="myDropdown" class="dropdown-content">
-                    <button>Red</button>
-                    <button>Blue</button>
-                    <button>Pink</button>
+      <div id="profile-content"></div>
+      <div id="settings-content">
+        <div id="table">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="info">
+                    <span class="name">Website Theme</span>
+                    <span class="description"
+                      >Select the theme for the website.</span
+                    >
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+                <td>
+                  <div>
+                    <button id="light-theme-btn">Light</button>
+                    <button id="dark-theme-btn">Dark</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="info">
+                    <span class="name">Accent Color</span>
+                    <span class="description"
+                      >Select the primary accent color for the UI.</span
+                    >
+                  </div>
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button class="dropbtn">Drop Down</button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <button>Red</button>
+                      <button>Blue</button>
+                      <button>Pink</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-
     <!-- Link to Swiper's JS for Carousel functionality -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="./scripts/sidebar.js"></script>

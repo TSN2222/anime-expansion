@@ -44,19 +44,31 @@
 
 body {
   margin: 0px;
+  height: 100vh;
+  overflow: hidden; /* prevent body from scrolling */
+  display: flex;
+  flex-direction: column;
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   font-family: Helvetica, Arial, sans-serif;
 }
 
-#main {
+.layout {
   display: flex;
-  justify-content: space-between;
+  height: 100vh; /* Make it fill the entire viewport */
+  overflow: hidden;
 }
 
 #home-content {
-  margin-left: 10%;
-  margin-right: 8%;
+  flex: 1;
+  overflow-y: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#main {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* width */
