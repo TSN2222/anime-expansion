@@ -5,10 +5,12 @@
   --tertiary-background-color: rgb(224, 224, 224);
   --quaternary-background-color: rgb(255, 255, 255);
   --quinary-background-color: rgb(207, 207, 207);
-  --senary-background-color: rgb(215, 216, 236);
+  --senary-background-color: var(--light-accent-background-color);
 
   --primary-text-color: rgb(0, 0, 0);
   --secondary-text-color: rgb(20, 20, 20);
+
+  --accent-text-color: var(--light-accent-text-color);
 
   --primary-border-color: rgb(206, 206, 206);
 
@@ -26,11 +28,12 @@
   --tertiary-background-color: rgb(20, 20, 20);
   --quaternary-background-color: rgb(32, 32, 32);
   --quinary-background-color: rgb(32, 32, 32);
-
-  --senary-background-color: rgb(37, 38, 56);
+  --senary-background-color: var(--dark-accent-background-color);
 
   --primary-text-color: rgb(255, 255, 255);
   --secondary-text-color: rgb(100, 100, 100);
+
+  --accent-text-color: var(--dark-accent-text-color);
 
   --primary-border-color: rgb(45, 45, 45);
 
@@ -39,6 +42,34 @@
 
   --primary-swiper-gradient: ;
   --secondary-swiper-gradient: ;
+}
+
+[accent-color='Default'] {
+  --dark-accent-text-color: rgb(133, 134, 216);
+  --light-accent-text-color: rgb(133, 134, 216);
+  --dark-accent-background-color: rgb(21, 21, 29);
+  --light-accent-background-color: rgb(234, 234, 242);
+}
+
+[accent-color='Red'] {
+  --dark-accent-text-color: rgb(255, 104, 75);
+  --light-accent-text-color: rgb(255, 104, 75);
+  --dark-accent-background-color: rgb(33, 18, 15);
+  --light-accent-background-color: rgb(246, 231, 226);
+}
+
+[accent-color='Green'] {
+  --dark-accent-text-color: rgb(47, 146, 91);
+  --light-accent-text-color: rgb(47, 146, 91);
+  --dark-accent-background-color: rgb(11, 22, 16);
+  --light-accent-background-color: rgb(224, 235, 229);
+}
+
+[accent-color='Pink'] {
+  --dark-accent-text-color: rgb(255, 110, 189);
+  --light-accent-text-color: rgb(255, 110, 189);
+  --dark-accent-background-color: rgb(32, 19, 26);
+  --light-accent-background-color: rgb(245, 232, 239);
 }
 
 body {

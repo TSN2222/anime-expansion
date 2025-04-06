@@ -1,6 +1,11 @@
 const button = document.querySelector('.dropbtn');
 const lightButton = document.getElementById('light-theme-btn');
 const darkButton = document.getElementById('dark-theme-btn');
+const defaultAccent = document.getElementById('default-accent');
+const redAccent = document.getElementById('red-accent');
+const greenAccent = document.getElementById('green-accent');
+const pinkAccent = document.getElementById('pink-accent');
+const dropdownText = document.getElementById('dropdown-content');
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
@@ -38,14 +43,51 @@ function setTheme(themeName) {
   }
 }
 
-// Add click events
+function setAccent(accentColor) {
+  document.documentElement.setAttribute('accent-color', accentColor);
+
+  localStorage.setItem('accent-color', accentColor);
+
+  if (accentColor === 'Default') {
+    defaultAccent.classList.add('active');
+    redAccent.classList.remove('active');
+    greenAccent.classList.remove('active');
+    pinkAccent.classList.remove('active');
+  } else if (accentColor === 'Red') {
+    defaultAccent.classList.remove('active');
+    redAccent.classList.add('active');
+    greenAccent.classList.remove('active');
+    pinkAccent.classList.remove('active');
+  } else if (accentColor === 'Green') {
+    defaultAccent.classList.remove('active');
+    redAccent.classList.remove('active');
+    greenAccent.classList.add('active');
+    pinkAccent.classList.remove('active');
+  } else if (accentColor === 'Pink') {
+    defaultAccent.classList.remove('active');
+    redAccent.classList.remove('active');
+    greenAccent.classList.remove('active');
+    pinkAccent.classList.add('active');
+  }
+
+  dropdownText.innerHTML = accentColor;
+}
+
+// Theme click listener
 lightButton.addEventListener('click', () => setTheme('light'));
 darkButton.addEventListener('click', () => setTheme('dark'));
+
+// Accent color click listener
+defaultAccent.addEventListener('click', () => setAccent('Default'));
+redAccent.addEventListener('click', () => setAccent('Red'));
+greenAccent.addEventListener('click', () => setAccent('Green'));
+pinkAccent.addEventListener('click', () => setAccent('Pink'));
 
 // On page load, check for saved theme
 document.addEventListener('DOMContentLoaded', () => {
   // Check if user has a saved preference
   const savedTheme = localStorage.getItem('theme');
+  const savedAccentColor = localStorage.getItem('accent-color');
 
   if (savedTheme) {
     // Apply saved theme
@@ -56,5 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     // Default to light theme (no data-theme attribute needed as it's the default)
     setTheme('light');
+  }
+
+  if (savedAccentColor) {
+    setAccent(savedAccentColor);
+    dropdownText.innerHTML = savedAccentColor;
+  } else {
+    setAccent('Default');
+    dropdownText.innerHTML = savedAccentColor;
   }
 });

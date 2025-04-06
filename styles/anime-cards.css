@@ -77,7 +77,7 @@
 }
 
 #tabs > .hover:hover {
-  color: rgb(138, 137, 213);
+  color: var(--accent-text-color);
 }
 
 #navigator > .hover:hover {
@@ -86,7 +86,7 @@
 
 #tabs > .active-tab {
   background-color: var(--senary-background-color);
-  color: rgb(138, 137, 213);
+  color: var(--accent-text-color);
 }
 /* #endregion */
 
