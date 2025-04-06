@@ -46,6 +46,10 @@ tr {
   color: var(--secondary-text-color);
 }
 
+.buttons {
+  cursor: default;
+}
+
 .buttons > button {
   border: 1px solid var(--primary-border-color);
   border-radius: 6px;
@@ -53,6 +57,10 @@ tr {
   color: var(--primary-text-color);
   cursor: pointer;
   padding: 8px 40px;
+}
+
+.buttons > button:hover {
+  color: rgb(138, 137, 213);
 }
 
 .buttons .active {
@@ -66,7 +74,7 @@ tr {
   background-color: var(--secondary-background-color);
   color: var(--primary-text-color);
   cursor: pointer;
-  padding: 8px 40px;
+  padding: 8px 78px;
 }
 
 .dropdown {
@@ -87,7 +95,7 @@ tr {
 .dropdown-content button {
   color: var(--primary-text-color);
   background-color: var(--secondary-background-color);
-  padding: 8px 60px;
+  padding: 8px 98px;
   text-decoration: none;
   border: none;
   display: block;
