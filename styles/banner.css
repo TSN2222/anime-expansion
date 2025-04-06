@@ -1,0 +1,67 @@
+/* The layout container that holds sidebar + main content */
+.layout {
+    max-width: 2000px; /* Increase or decrease as you like */
+    margin: 0 auto;    /* Center the entire layout */
+    display: flex;     /* Sidebar + main content side by side */
+  }
+  
+  /* MAIN WRAPPER: fills remaining space to the right of sidebar */
+  .main-wrapper {
+    flex: 1;         /* fill the rest of the layout container */
+    padding: 0 20px; /* optional horizontal padding */
+    box-sizing: border-box;
+  }
+  
+  /* BANNER WRAPPER */
+  .anime-header-container {
+    width: 100%;      /* fill main-wrapper width */
+    margin-top: 20px; /* spacing above banner */
+    position: relative;
+  }
+  
+  .anime-banner {
+    width: 100%;      /* match main-wrapper width */
+    height: 350px;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .anime-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    z-index: 2;
+  }
+  
+  /* Cover + Title at bottom of banner */
+  .banner-bottom-row {
+    position: absolute;
+    bottom: -160px; 
+    left: 20px;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    z-index: 3;
+  }
+  
+  #cover-img {
+    width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+  
+  .banner-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .anime-title {
+    font-size: 2rem;
+    margin-bottom: 160px;
+    color: #fff;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  }

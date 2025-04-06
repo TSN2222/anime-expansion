@@ -22,6 +22,7 @@ const animeConfigs = {
             season: $season, 
             seasonYear: $seasonYear, 
             format_in: [TV, TV_SHORT]) {
+            id
             title {
               english
               romaji
@@ -124,9 +125,11 @@ function renderAnimeData(section, data) {
     const mediaFormat = anime.format;
     const year = anime.startDate?.year || anime.seasonYear;
     const totalEpisodes = anime.episodes;
+    const animeId = anime.id
 
     const animeEntry = document.createElement('anicard');
     let animeHTML = `
+     <a href="../pages/details.html?id=${animeId}" class="airing-link">
     <div class="airing-parent">
       <div class="image-container-two">
         <img class="cover-image-two" src="${coverImage}" />
