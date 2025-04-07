@@ -175,3 +175,24 @@ function formatDate(dateObj) {
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+/* ========== TAB NAVIGATION ========== */
+document.addEventListener("DOMContentLoaded", () => {
+  const tabLinks = document.querySelectorAll(".anime-nav a");
+  const sections = document.querySelectorAll(".anime-section");
+
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      tabLinks.forEach((tab) => tab.classList.remove("active"));
+      sections.forEach((sec) => sec.classList.remove("active"));
+      link.classList.add("active");
+
+      const target = link.getAttribute("data-target");
+      const targetSection = document.querySelector(target);
+      if (targetSection) {
+        targetSection.classList.add("active");
+      }
+    });
+  });
+});
