@@ -22,37 +22,15 @@ const query = `
       status
       season
       seasonYear
-      startDate {
-        year
-        month
-        day
-      }
-      endDate {
-        year
-        month
-        day
-      }
-      studios {
-        edges {
-          node {
-            name
-          }
-          isMain
-        }
-      }
+      startDate { year month day }
+      endDate { year month day }
+      studios { edges { node { name } isMain } }
       genres
       bannerImage
-      coverImage {
-        large
-      }
+      coverImage { large }
       popularity
       averageScore
-      rankings {
-        rank
-        type
-        allTime
-        context
-      }
+      rankings { rank type allTime context }
       description(asHtml: false)
       trailer {
         id
@@ -85,79 +63,96 @@ const query = `
   }
 `;
 
-fetch("https://graphql.anilist.co", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      query,
-      variables: { id: parseInt(animeId) },
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      const anime = data.data.Media;
-      if (!anime) {
-        throw new Error("No anime data returned from AniList.");
-      }
+/* ========== FETCH DATA ========== */
+async function fetchAnimeData(id) {
+  try {
+    const response = await fetch("https://graphql.anilist.co", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ query, variables: { id: parseInt(id) } })
+    });
 
-      /* ========== BANNER ========== */
-      const bannerBg = document.getElementById("banner-bg");
-      if (bannerBg && anime.bannerImage) {
-        bannerBg.style.backgroundImage = `url(${anime.bannerImage})`;
-      }
+    const { data } = await response.json();
+    if (!data?.Media) throw new Error("No anime data returned from AniList.");
 
-      /* ========== COVER IMAGE ========== */
-      const coverImg = document.getElementById("cover-img");
-      if (coverImg && anime.coverImage?.large) {
-        coverImg.src = anime.coverImage.large;
-      }
-
-      /* ========== ENGLISH TITLE (Banner) ========== */
-      const titleEl = document.getElementById("anime-title");
-      if (titleEl) {
-        titleEl.textContent = anime.title.english || "Title Unavailable";
-      }
-
-      /* ========== TITLES SECTION ========== */
-    document.getElementById("anime-english-title").textContent = anime.title.english || "N/A";
-    document.getElementById("anime-native-title").textContent = anime.title.native || "N/A";
-    document.getElementById("anime-romaji-title").textContent = anime.title.romaji || "N/A";
-
-    /* ========== INFORMATION SECTION ========== */
-    document.getElementById("anime-format").textContent = anime.format || "N/A";
-    document.getElementById("anime-episodes").textContent = anime.episodes || "N/A";
-    document.getElementById("anime-status").textContent = anime.status?.replace(/_/g, " ") || "N/A";
-
-    const start = formatDate(anime.startDate);
-    const end = formatDate(anime.endDate);
-    document.getElementById("anime-aired").textContent = start && end ? `${start} to ${end}` : start || "N/A";
-
-    if (anime.season && anime.seasonYear) {
-      document.getElementById("anime-premiered").textContent = `${capitalize(anime.season.toLowerCase())} ${anime.seasonYear}`;
-    }
-
-    const studios = anime.studios.edges.filter(edge => edge.isMain).map(edge => edge.node.name).join(', ');
-    document.getElementById("anime-studios").textContent = studios || "N/A";
-
-    const producers = anime.studios.edges.filter(edge => !edge.isMain).map(edge => edge.node.name).join(', ');
-    document.getElementById("anime-producers").textContent = producers || "N/A";
-
-    document.getElementById("anime-genres").textContent = anime.genres?.join(', ') || "N/A";
-
-    /* ========== STATISTICS SECTION ========== */
-    document.getElementById("anime-score").textContent = anime.averageScore ? (anime.averageScore / 10).toFixed(1) : "N/A";
-
-    const ratingRank = anime.rankings.find(r => r.type === "RATED" && r.allTime);
-    document.getElementById("anime-rank").textContent = ratingRank ? `#${ratingRank.rank}` : "N/A";
-
-    document.getElementById("anime-popularity").textContent = anime.popularity || "N/A";
-  })
-  .catch((error) => {
+    renderAnimeData(data.Media);
+  } catch (error) {
     console.error("Failed to load anime:", error);
-  });
+  }
+}
+
+/* ========== RENDER DATA ========== */
+function renderAnimeData(anime) {
+  // Banner Image
+  const bannerBg = document.getElementById("banner-bg");
+  if (bannerBg && anime.bannerImage) bannerBg.style.backgroundImage = `url(${anime.bannerImage})`;
+
+  // Cover Image
+  const coverImg = document.getElementById("cover-img");
+  if (coverImg && anime.coverImage?.large) coverImg.src = anime.coverImage.large;
+
+  // Titles
+  document.getElementById("anime-title").textContent = anime.title.english || "Title Unavailable";
+  document.getElementById("anime-english-title").textContent = anime.title.english || "N/A";
+  document.getElementById("anime-native-title").textContent = anime.title.native || "N/A";
+  document.getElementById("anime-romaji-title").textContent = anime.title.romaji || "N/A";
+
+  // Information Section
+  document.getElementById("anime-format").textContent = anime.format || "N/A";
+  document.getElementById("anime-episodes").textContent = anime.episodes || "N/A";
+  document.getElementById("anime-status").textContent = anime.status?.replace(/_/g, " ") || "N/A";
+  
+  const start = formatDate(anime.startDate);
+  const end = formatDate(anime.endDate);
+  document.getElementById("anime-aired").textContent = start && end ? `${start} to ${end}` : start || "N/A";
+
+  if (anime.season && anime.seasonYear) {
+    document.getElementById("anime-premiered").textContent = `${capitalize(anime.season.toLowerCase())} ${anime.seasonYear}`;
+  }
+
+  const studios = anime.studios.edges.filter(edge => edge.isMain).map(edge => edge.node.name).join(', ') || "N/A";
+  document.getElementById("anime-studios").textContent = studios;
+
+  const producers = anime.studios.edges.filter(edge => !edge.isMain).map(edge => edge.node.name).join(', ') || "N/A";
+  document.getElementById("anime-producers").textContent = producers;
+
+  document.getElementById("anime-genres").textContent = anime.genres?.join(', ') || "N/A";
+
+  renderStats(anime);
+}
+
+/* ========== RENDER STATS ========== */
+function renderStats(anime) {
+  const ratingRank = anime.rankings?.find(r => r.type === "RATED" && r.allTime);
+  const rankValue = ratingRank ? `#${ratingRank.rank}` : "N/A";
+  const scoreValue = anime.averageScore ? (anime.averageScore / 10).toFixed(1) : "N/A";
+  const popularityValue = anime.popularity || "N/A";
+
+  // Render Stats in Overview Section
+  const overviewTopStatsEl = document.getElementById("overview-top-stats");
+  if (overviewTopStatsEl) {
+    overviewTopStatsEl.innerHTML = `
+      <div class="overview-top-stats-container">
+        <div class="score-section">
+          <div class="score-label">SCORE</div>
+          <div class="score-value">${scoreValue}</div>
+          <div class="score-users">${popularityValue} users</div>
+        </div>
+        <div class="divider"></div>
+        <div class="rank-section">
+          <p>Ranked <strong>${rankValue}</strong></p>
+          <p>Popularity <strong>#${popularityValue}</strong></p>
+        </div>
+      </div>
+    `;
+  }
+
+  // Render Stats in Info Section 
+  document.getElementById("anime-score").textContent = scoreValue;
+  document.getElementById("anime-rank").textContent = rankValue;
+  document.getElementById("anime-popularity").textContent = popularityValue;
+}
+
 
 /* ========== HELPER FUNCTIONS ========== */
 function formatDate(dateObj) {
@@ -165,11 +160,7 @@ function formatDate(dateObj) {
   const { year, month, day } = dateObj;
   if (!month || !day) return `${year}`;
   const date = new Date(year, month - 1, day);
-  return date.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  return date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
 }
 
 function capitalize(str) {
@@ -184,15 +175,14 @@ document.addEventListener("DOMContentLoaded", () => {
   tabLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      tabLinks.forEach((tab) => tab.classList.remove("active"));
-      sections.forEach((sec) => sec.classList.remove("active"));
+      tabLinks.forEach(tab => tab.classList.remove("active"));
+      sections.forEach(sec => sec.classList.remove("active"));
       link.classList.add("active");
 
-      const target = link.getAttribute("data-target");
-      const targetSection = document.querySelector(target);
-      if (targetSection) {
-        targetSection.classList.add("active");
-      }
+      const target = document.querySelector(link.getAttribute("data-target"));
+      if (target) target.classList.add("active");
     });
   });
+
+  fetchAnimeData(animeId);
 });
