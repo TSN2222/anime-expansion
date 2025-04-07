@@ -63,6 +63,8 @@ const query = `
   }
 `;
 
+let trailerSrc = null;
+
 /* ========== FETCH DATA ========== */
 async function fetchAnimeData(id) {
   try {
@@ -97,28 +99,36 @@ function renderAnimeData(anime) {
   document.getElementById("anime-native-title").textContent = anime.title.native || "N/A";
   document.getElementById("anime-romaji-title").textContent = anime.title.romaji || "N/A";
 
-  // Information Section
-  document.getElementById("anime-format").textContent = anime.format || "N/A";
-  document.getElementById("anime-episodes").textContent = anime.episodes || "N/A";
-  document.getElementById("anime-status").textContent = anime.status?.replace(/_/g, " ") || "N/A";
-  
-  const start = formatDate(anime.startDate);
-  const end = formatDate(anime.endDate);
-  document.getElementById("anime-aired").textContent = start && end ? `${start} to ${end}` : start || "N/A";
-
-  if (anime.season && anime.seasonYear) {
-    document.getElementById("anime-premiered").textContent = `${capitalize(anime.season.toLowerCase())} ${anime.seasonYear}`;
-  }
-
-  const studios = anime.studios.edges.filter(edge => edge.isMain).map(edge => edge.node.name).join(', ') || "N/A";
-  document.getElementById("anime-studios").textContent = studios;
-
-  const producers = anime.studios.edges.filter(edge => !edge.isMain).map(edge => edge.node.name).join(', ') || "N/A";
-  document.getElementById("anime-producers").textContent = producers;
-
-  document.getElementById("anime-genres").textContent = anime.genres?.join(', ') || "N/A";
+  // Render Trailer
+  renderTrailer(anime);
 
   renderStats(anime);
+}
+
+/* ========== RENDER TRAILER ========== */
+function renderTrailer(anime) {
+  const trailerContainer = document.getElementById("overview-trailer-container");
+  trailerContainer.innerHTML = ""; // Clear previous content
+
+  if (anime.trailer && anime.trailer.site.toLowerCase() === "youtube") {
+    trailerSrc = `https://www.youtube.com/embed/${anime.trailer.id}`;
+
+    const trailerIframe = document.createElement("iframe");
+    trailerIframe.src = trailerSrc;
+    trailerIframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    trailerIframe.allowFullscreen = true;
+    trailerIframe.style.border = "none";
+    trailerIframe.classList.add("trailer-iframe");
+
+    const iframeWrapper = document.createElement("div");
+    iframeWrapper.classList.add("trailer-wrapper");
+    iframeWrapper.appendChild(trailerIframe);
+
+    trailerContainer.appendChild(iframeWrapper);
+  } else {
+    trailerContainer.textContent = "No trailer available.";
+  }
 }
 
 /* ========== RENDER STATS ========== */
@@ -128,7 +138,7 @@ function renderStats(anime) {
   const scoreValue = anime.averageScore ? (anime.averageScore / 10).toFixed(1) : "N/A";
   const popularityValue = anime.popularity || "N/A";
 
-  // Render Stats in Overview Section
+  /* ========== RENDER STATS IN OVERVIEW SECTION========== */
   const overviewTopStatsEl = document.getElementById("overview-top-stats");
   if (overviewTopStatsEl) {
     overviewTopStatsEl.innerHTML = `
@@ -146,13 +156,11 @@ function renderStats(anime) {
       </div>
     `;
   }
-
-  // Render Stats in Info Section 
+/* ========== RENDER STATS IN INFO SECTION========== */
   document.getElementById("anime-score").textContent = scoreValue;
   document.getElementById("anime-rank").textContent = rankValue;
   document.getElementById("anime-popularity").textContent = popularityValue;
 }
-
 
 /* ========== HELPER FUNCTIONS ========== */
 function formatDate(dateObj) {
@@ -181,6 +189,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const target = document.querySelector(link.getAttribute("data-target"));
       if (target) target.classList.add("active");
+
+      const trailerContainer = document.getElementById("overview-trailer-container");
+      const iframe = trailerContainer?.querySelector("iframe");
+
+      if (target !== document.querySelector("#overview-section") && iframe) {
+        iframe.src = "";
+      } else if (iframe && trailerSrc) {
+        iframe.src = trailerSrc;
+      }
     });
   });
 
