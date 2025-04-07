@@ -7,7 +7,6 @@ if (!animeId || isNaN(parseInt(animeId))) {
   throw new Error("Invalid or missing anime ID.");
 }
 
-/* ========== ANILIST GRAPHQL QUERY ========== */
 const query = `
   query ($id: Int) {
     Media(id: $id, type: ANIME) {
@@ -104,21 +103,75 @@ fetch("https://graphql.anilist.co", {
         throw new Error("No anime data returned from AniList.");
       }
 
-       /* ========== BANNER ========== */
-    const bannerBg = document.getElementById("banner-bg");
-    if (bannerBg && anime.bannerImage) {
-      bannerBg.style.backgroundImage = `url(${anime.bannerImage})`;
+      /* ========== BANNER ========== */
+      const bannerBg = document.getElementById("banner-bg");
+      if (bannerBg && anime.bannerImage) {
+        bannerBg.style.backgroundImage = `url(${anime.bannerImage})`;
+      }
+
+      /* ========== COVER IMAGE ========== */
+      const coverImg = document.getElementById("cover-img");
+      if (coverImg && anime.coverImage?.large) {
+        coverImg.src = anime.coverImage.large;
+      }
+
+      /* ========== ENGLISH TITLE (Banner) ========== */
+      const titleEl = document.getElementById("anime-title");
+      if (titleEl) {
+        titleEl.textContent = anime.title.english || "Title Unavailable";
+      }
+
+      /* ========== TITLES SECTION ========== */
+    document.getElementById("anime-english-title").textContent = anime.title.english || "N/A";
+    document.getElementById("anime-native-title").textContent = anime.title.native || "N/A";
+    document.getElementById("anime-romaji-title").textContent = anime.title.romaji || "N/A";
+
+    /* ========== INFORMATION SECTION ========== */
+    document.getElementById("anime-format").textContent = anime.format || "N/A";
+    document.getElementById("anime-episodes").textContent = anime.episodes || "N/A";
+    document.getElementById("anime-status").textContent = anime.status?.replace(/_/g, " ") || "N/A";
+
+    const start = formatDate(anime.startDate);
+    const end = formatDate(anime.endDate);
+    document.getElementById("anime-aired").textContent = start && end ? `${start} to ${end}` : start || "N/A";
+
+    if (anime.season && anime.seasonYear) {
+      document.getElementById("anime-premiered").textContent = `${capitalize(anime.season.toLowerCase())} ${anime.seasonYear}`;
     }
 
-    /* ========== COVER IMAGE ========== */
-    const coverImg = document.getElementById("cover-img");
-    if (coverImg && anime.coverImage?.large) {
-      coverImg.src = anime.coverImage.large;
-    }
+    const studios = anime.studios.edges.filter(edge => edge.isMain).map(edge => edge.node.name).join(', ');
+    document.getElementById("anime-studios").textContent = studios || "N/A";
 
-    /* ========== ENGLISH TITLE (Banner) ========== */
-    const titleEl = document.getElementById("anime-title");
-    if (titleEl) {
-      titleEl.textContent = anime.title.english || "Title Unavailable";
-    }
-})
+    const producers = anime.studios.edges.filter(edge => !edge.isMain).map(edge => edge.node.name).join(', ');
+    document.getElementById("anime-producers").textContent = producers || "N/A";
+
+    document.getElementById("anime-genres").textContent = anime.genres?.join(', ') || "N/A";
+
+    /* ========== STATISTICS SECTION ========== */
+    document.getElementById("anime-score").textContent = anime.averageScore ? (anime.averageScore / 10).toFixed(1) : "N/A";
+
+    const ratingRank = anime.rankings.find(r => r.type === "RATED" && r.allTime);
+    document.getElementById("anime-rank").textContent = ratingRank ? `#${ratingRank.rank}` : "N/A";
+
+    document.getElementById("anime-popularity").textContent = anime.popularity || "N/A";
+  })
+  .catch((error) => {
+    console.error("Failed to load anime:", error);
+  });
+
+/* ========== HELPER FUNCTIONS ========== */
+function formatDate(dateObj) {
+  if (!dateObj?.year) return "N/A";
+  const { year, month, day } = dateObj;
+  if (!month || !day) return `${year}`;
+  const date = new Date(year, month - 1, day);
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
