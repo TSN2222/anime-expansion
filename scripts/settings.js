@@ -105,6 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdownText.innerHTML = savedAccentColor;
   } else {
     setAccent('Default');
-    dropdownText.innerHTML = savedAccentColor;
+    dropdownText.innerHTML = 'Default';
   }
 });
