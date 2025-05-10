@@ -9,15 +9,11 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-  
+    <!-- External CSS files -->
     <link rel="stylesheet" href="../styles/navbar.css" />
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/sidebar.css" />
-    <link rel="stylesheet" href="../styles/banner.css" />
     <link rel="stylesheet" href="../styles/info.css" />
-    <link rel="stylesheet" href="../styles/tabs.css" />
-    <link rel="stylesheet" href="../styles/overview-stats.css" />
-    <link rel="stylesheet" href="../styles/trailer.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -52,125 +48,165 @@
         </a>
       </div>
 
-     
-  <!-- Main Content Wrapper -->
-  <div class="main-wrapper">
-    <!-- Banner Section -->
-    <div class="anime-header-container">
-      <div
-        class="anime-banner"
-        id="banner-bg"
-        style="background-image: url('banner.jpg');"
-      >
-        <div class="banner-bottom-row">
-          <img id="cover-img" src="cover.jpg" alt="cover" />
-          <div class="banner-title-container">
-            <h1 id="anime-title" class="anime-title">Loading...</h1>
+      <!-- Main Content Wrapper -->
+      <div class="main-wrapper">
+        <!-- Banner Section -->
+        <div class="anime-header-container">
+          <div
+            class="anime-banner"
+            id="banner-bg"
+            style="background-image: url('banner.jpg');"
+          >
+            <div class="banner-bottom-row">
+              <img id="cover-img" src="cover.jpg" alt="cover" />
+              <div class="banner-title-container">
+                <h1 id="anime-title" class="anime-title">Loading...</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Row: Info Panel (left) & Tabs/Sections (right) -->
+        <div class="content-row">
+          <!-- Info Panel -->
+          <div class="info-container-wrapper">
+            <div class="anime-info-container">
+              <button class="btn add-list-btn">Add to List</button>
+              <!-- Titles Section -->
+              <h3 class="info-section-title">Titles</h3>
+              <ul class="title-list">
+                <li>
+                  <strong>English:</strong>
+                  <span id="anime-english-title"></span>
+                </li>
+                <li>
+                  <strong>Japanese:</strong>
+                  <span id="anime-native-title"></span>
+                </li>
+                <li>
+                  <strong>Romaji:</strong>
+                  <span id="anime-romaji-title"></span>
+                </li>
+              </ul>
+              <!-- Information Section -->
+              <h3 class="info-section-title">Information</h3>
+              <ul class="anime-details">
+                <li>
+                  <strong>Type:</strong>
+                  <span id="anime-format"></span>
+                </li>
+                <li>
+                  <strong>Episodes:</strong>
+                  <span id="anime-episodes"></span>
+                </li>
+                <li>
+                  <strong>Status:</strong>
+                  <span id="anime-status"></span>
+                </li>
+                <li>
+                  <strong>Aired:</strong>
+                  <span id="anime-aired"></span>
+                </li>
+                <li>
+                  <strong>Premiered:</strong>
+                  <span id="anime-premiered"></span>
+                </li>
+                <li>
+                  <strong>Producers:</strong>
+                  <span id="anime-producers"></span>
+                </li>
+                <li>
+                  <strong>Studios:</strong>
+                  <span id="anime-studios"></span>
+                </li>
+                <li>
+                  <strong>Genres:</strong>
+                  <span id="anime-genres"></span>
+                </li>
+              </ul>
+              <!-- Statistics Section -->
+              <h3 class="info-section-title">Statistics</h3>
+              <ul class="anime-statistics">
+                <li>
+                  <strong>Score:</strong>
+                  <span id="anime-score"></span>/10
+                </li>
+                <li>
+                  <strong>Ranking:</strong>
+                  <span id="anime-rank"></span>
+                </li>
+                <li>
+                  <strong>Popularity:</strong>
+                  <span id="anime-popularity"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tabs and Sections -->
+          <div class="tabs-container">
+            <div class="anime-tabs">
+              <ul class="anime-nav">
+                <li>
+                  <a class="active" data-target="#overview-section" href="#"
+                    >Overview</a
+                  >
+                </li>
+                <li>
+                  <a data-target="#characters-section" href="#">Characters</a>
+                </li>
+              </ul>
+            </div>
+            <div class="anime-sections">
+              <!-- Overview Section -->
+              <section id="overview-section" class="anime-section active">
+                <h2>Overview</h2>
+                <div id="overview-top-stats"></div> 
+                <div id="overview-trailer-container"></div>
+                <div class="synopsis-panel">
+                  <h3 class="synopsis-title">Synopsis</h3>
+                  <div id="anime-synopsis" class="synopsis-content"></div>
+                </div>
+              </section>
+
+              <!-- Characters Section -->
+              <section id="characters-section" class="anime-section">
+                <h2>Characters</h2>
+                <div id="characters-list">
+                  <!-- Character Card -->
+                  <div class="character-card">
+                    <div class="left-block">
+                      <img
+                        class="character-img"
+                        src="character1.jpg"
+                        alt="Character 1"
+                      />
+                      <div class="char-info">
+                        <p class="char-name">Character Name 1</p>
+                        <p class="char-role">Main</p>
+                      </div>
+                    </div>
+                    <div class="right-block">
+                      <div class="va-info">
+                        <p class="va-name">Voice Actor 1</p>
+                        <p class="va-lang">Japanese</p>
+                      </div>
+                      <img
+                        class="va-img"
+                        src="va1.jpg"
+                        alt="Voice Actor 1"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-      <!-- Content Row: Info Panel (left) & Tabs/Sections (right) -->
-      <div class="content-row">
-        <!-- Info Panel -->
-        <div class="info-container-wrapper">
-          <div class="anime-info-container">
-            <button class="btn add-list-btn">Add to List</button>
-            <!-- Titles Section -->
-            <h3 class="info-section-title">Titles</h3>
-            <ul class="title-list">
-              <li>
-                <strong>English:</strong>
-                <span id="anime-english-title"></span>
-              </li>
-              <li>
-                <strong>Japanese:</strong>
-                <span id="anime-native-title"></span>
-              </li>
-              <li>
-                <strong>Romaji:</strong>
-                <span id="anime-romaji-title"></span>
-              </li>
-            </ul>
-            <!-- Information Section -->
-            <h3 class="info-section-title">Information</h3>
-            <ul class="anime-details">
-              <li>
-                <strong>Type:</strong>
-                <span id="anime-format"></span>
-              </li>
-              <li>
-                <strong>Episodes:</strong>
-                <span id="anime-episodes"></span>
-              </li>
-              <li>
-                <strong>Status:</strong>
-                <span id="anime-status"></span>
-              </li>
-              <li>
-                <strong>Aired:</strong>
-                <span id="anime-aired"></span>
-              </li>
-              <li>
-                <strong>Premiered:</strong>
-                <span id="anime-premiered"></span>
-              </li>
-              <li>
-                <strong>Producers:</strong>
-                <span id="anime-producers"></span>
-              </li>
-              <li>
-                <strong>Studios:</strong>
-                <span id="anime-studios"></span>
-              </li>
-              <li>
-                <strong>Genres:</strong>
-                <span id="anime-genres"></span>
-              </li>
-            </ul>
-            <!-- Statistics Section -->
-            <h3 class="info-section-title">Statistics</h3>
-            <ul class="anime-statistics">
-              <li>
-                <strong>Score:</strong>
-                <span id="anime-score"></span>/10
-              </li>
-              <li>
-                <strong>Ranking:</strong>
-                <span id="anime-rank"></span>
-              </li>
-              <li>
-                <strong>Popularity:</strong>
-                <span id="anime-popularity"></span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-         <!-- Tabs and Sections -->
-         <div class="tabs-container">
-          <div class="anime-tabs">
-            <ul class="anime-nav">
-              <li>
-                <a class="active" data-target="#overview-section" href="#"
-                  >Overview</a
-                >
-              </li>
-              <li>
-                <a data-target="#characters-section" href="#">Characters</a>
-              </li>
-            </ul>
-          </div>
-          <div class="anime-sections">
-
-             <!-- Overview Section -->
-             <section id="overview-section" class="anime-section active">
-              <div id="overview-top-stats"></div> 
-              <div id="overview-trailer-container"></div>
-            </section>
-
-        <script src="../scripts/sidebar.js"></script>
-      <script src="../scripts/info.js"></script>
-    </body>
-  </html>
+    <script src="../scripts/sidebar.js"></script>
+    <script src="../scripts/info.js"></script>
+  </body>
+</html>
