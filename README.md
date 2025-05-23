@@ -1,3 +1,3 @@
 # Anime Expansion
 
-Recommends anime based On Other anime you like
+Provides the ability to filter and see detailed information about anime.
