@@ -27,8 +27,13 @@ function navigateTo(route) {
 // Add event listeners to sidebar links
 sidebarLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
-    e.preventDefault();
     const route = link.getAttribute('href');
+
+    if (route === "../index.html") { // Special case for Home link
+      return; // Let the browser handle it normally
+    }
+
+    e.preventDefault();
     navigateTo(route);
 
     // Update browser URL without page reload

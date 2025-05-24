@@ -1,0 +1,58 @@
+/* TABS CONTAINER: fill remaining space to the right of info panel */
+.tabs-container {
+    flex: 1;
+    margin-left: 10px;
+    margin-top: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    z-index: 3;
+  }
+  
+  /* TABS & NAV */
+  .anime-tabs {
+    display: inline-block;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .anime-nav {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .anime-nav a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 16px;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .anime-nav a:hover {
+    background-color: #555;
+  }
+  
+  .anime-nav a.active {
+    background-color: #3b2f63;
+    color: #fff;
+  }
+  
+  /* TAB CONTENT */
+  .anime-sections {
+    margin-top: 10px;
+  }
+  
+  .anime-section {
+    display: none;
+  }
+  .anime-section.active {
+    display: block;
+  }
+  

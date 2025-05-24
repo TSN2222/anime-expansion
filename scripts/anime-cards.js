@@ -51,6 +51,7 @@ async function fetchAnimeData() {
   query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
     Page(page: $page, perPage: $perPage) {
       media(sort: $sort, type: ANIME) {
+      id
         title {
           english
           romaji
@@ -126,7 +127,7 @@ function renderAnimeList(data) {
 
     const animeCard = document.createElement('a');
     animeCard.classList.add('anime-link');
-    animeCard.href = ''; // Will user later
+    animeCard.href = `../pages/details.html?id=${item.id}`; // Will user later
     animeCard.innerHTML = `
       <div>
         <div class="image-container">
